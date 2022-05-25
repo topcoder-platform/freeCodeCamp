@@ -36,7 +36,7 @@
   "scripts": {
     "analyze-bundle": "webpack-bundle-analyzer",
     "prebuild": "npm-run-all create:*",
-    "build": "npm run build:curriculum && npm run build:client && npm run build:server",
+    "build": "npm-run-all -p build:*",
     "build-workers": "cd ./client && npm run prebuild",
     "build:client": "cd ./client && npm i && npm run build",
     "build:curriculum": "cd ./curriculum && npm run build",
