@@ -38,7 +38,7 @@
     "prebuild": "npm-run-all create:*",
     "build": "npm run build:curriculum && npm run build:client && npm run build:server",
     "build-workers": "cd ./client && npm run prebuild",
-    "build:client": "cd ./client && npm run build",
+    "build:client": "cd ./client && npm i && npm run build",
     "build:curriculum": "cd ./curriculum && npm run build",
     "build:server": "cd ./api-server && npm run build",
     "challenge-editor": "npm-run-all -p challenge-editor:*",
