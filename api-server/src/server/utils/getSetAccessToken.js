@@ -1,9 +1,14 @@
-import { isBefore } from 'date-fns';
+// TODO: figure out how to determine if the token is expired
+// PROD-2288
+// import { isBefore } from 'date-fns';
 import jwt from 'jsonwebtoken';
 
 import { jwtSecret as _jwtSecret } from '../../../../config/secrets';
 
-export const jwtCookieNS = 'jwt_access_token';
+// TOPCODER: we are using the name of the cookie created
+// by the TC Auth0 implementation
+export const jwtCookieNS = 'tcjwt';
+//export const jwtCookieNS = 'jwt_access_token';
 
 export function createCookieConfig(req) {
   return {
@@ -30,7 +35,10 @@ export function setAccessTokenToResponse(
 export function getAccessTokenFromRequest(req, jwtSecret = _jwtSecret) {
   const maybeToken =
     (req.signedCookies && req.signedCookies[jwtCookieNS]) ||
-    (req.cookie && req.cookie[jwtCookieNS]);
+    (req.cookie && req.cookie[jwtCookieNS]) ||
+    // TOPCODER: the jwt cookie is in the cookies var instead
+    // of the cookie string
+    req.cookies?.[jwtCookieNS];
   if (!maybeToken) {
     return {
       accessToken: null,
@@ -44,16 +52,27 @@ export function getAccessTokenFromRequest(req, jwtSecret = _jwtSecret) {
     return { accessToken: null, error: errorTypes.invalidToken };
   }
 
-  const { accessToken } = token;
-  const { created, ttl } = accessToken;
-  const valid = isBefore(Date.now(), Date.parse(created) + ttl);
+  let valid = false;
+  try {
+    // TODO: figure out how to determine if the token is expired
+    // PROD-2288
+    valid = true; // isBefore(Date.now(), Date.parse(token.exp));
+  } catch (ex) {
+    valid = false;
+  }
   if (!valid) {
     return {
       accessToken: null,
       error: errorTypes.expiredToken
     };
   }
-  return { accessToken, error: '' };
+  // TOPCODER: the TC Auth0 implementation doesn't have an access
+  // token, so we just use the token itself.
+  return {
+    accessToken: token,
+    error: '',
+  };
+  // return { accessToken, error: '' };
 }
 
 export function removeCookies(req, res) {
