@@ -273,6 +273,7 @@ export function isValidChallengeCompletion(req, res, next) {
     console.debug('solution', solution, !isURL(solution));
     return res.status(403).json(isValidChallengeCompletionErrorMsg);
   }
+
   return next();
 }
 
