@@ -1,9 +1,7 @@
 import React from 'react';
 
-import {
-  CertificationLayout,
-  TcIntegrationLayout
-} from '../../src/components/layouts';
+import CertificationLayout from '../../src/components/layouts/certification';
+import TcIntegrationLayout from '../../src/components/layouts/tc-integration';
 import FourOhFourPage from '../../src/pages/404';
 import { isChallenge } from '../../src/utils/path-parsers';
 

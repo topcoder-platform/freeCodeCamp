@@ -7,7 +7,7 @@ import type {
   editor
   // eslint-disable-next-line import/no-duplicates
 } from 'monaco-editor/esm/vs/editor/editor.api';
-import { highlightAllUnder } from 'prismjs';
+import Prism from 'prismjs';
 import React, {
   useEffect,
   Suspense,
@@ -69,6 +69,7 @@ import {
 import GreenPass from '../../../assets/icons/green-pass';
 import Code from '../../../assets/icons/code';
 import ExternalLink from '../../../assets/icons/link-external';
+import { enhancePrismAccessibility } from '../utils/index';
 import LowerJaw from './lower-jaw';
 
 import './editor.css';
@@ -455,6 +456,12 @@ const Editor = (props: EditorProps): JSX.Element => {
         newLine.run();
       }
     );
+    // @ts-ignore
+    editor._standaloneKeybindingService.addDynamicKeybinding(
+      '-actions.find',
+      null,
+      () => {}
+    );
     /* eslint-enable */
     editor.addAction({
       id: 'execute-challenge',
@@ -735,7 +742,8 @@ const Editor = (props: EditorProps): JSX.Element => {
     descContainer.appendChild(jawHeading);
     descContainer.appendChild(desc);
     desc.innerHTML = description;
-    highlightAllUnder(desc);
+    Prism.hooks.add('complete', enhancePrismAccessibility);
+    Prism.highlightAllUnder(desc);
 
     domNode.style.userSelect = 'text';
 

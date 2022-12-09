@@ -49,7 +49,7 @@ Nota che la chiave `download_language` deve essere impostata sul codice della li
 
 Ci sono alcuni step da svolgere per consentire il build del codebase nella lingua scelta.
 
-Per prima cosa, visita il file `config/i18n/all-langs.ts` per aggiungere la lingua alle lingue disponibili nella lista e configurare i valori. Qui ci sono diversi oggetti.
+Per prima cosa, visita il file `config/i18n.ts` per aggiungere la lingua alla lista delle lingue disponibili e configurare i valori. Qui ci sono diversi oggetti.
 
 - `availableLangs`: per entrambi gli array `client` e `curriculum`, aggiungi il testo del nome della lingua. Questo è il valore che sarà usato nel file `.env` più tardi.
 - `auditedCerts`: Aggiungi il nome della lingua come _chiave_ e aggiungi un array di variabili `SuperBlocks.{cert}` come _valore_. Questo dice al client quali certificazioni sono completamente tradotte.
@@ -57,8 +57,9 @@ Per prima cosa, visita il file `config/i18n/all-langs.ts` per aggiungere la ling
 - `LangNames`: Questi sono i nomi delle lingue visualizzati nel menu di navigazione.
 - `LangCodes`: Questi sono i codici delle lingue usati per formattare date e numeri. Questi devono essere codici Unicode CLDR invece di codici ISO.
 - `hiddenLangs`: Queste lingue non saranno mostrate nel menu di navigazione. Viene usato per le lingue che non sono ancora pronte per il rilascio.
+- `rtlLangs`: Sono le lingue che si leggono da destra a sinistra.
 
-Per esempio, se vuoi attivare la lingua Dothraki, il tuo oggetto `all-langs.js` dovrebbe essere come segue:
+Per esempio, se vuoi attivare la lingua Dothraki, il tuo oggetto `i18n.ts` dovrebbe essere come segue:
 
 ```js
 export const availableLangs = {
@@ -136,6 +137,8 @@ export enum LangCodes = {
 };
 
 export const hiddenLangs = ['dothraki'];
+
+export const rtlLangs = [''];
 ```
 
 > [!NOTE] Quando è stato impostato il deployment per una lingua che ha già una sezione `/news` live, può essere rimossa dall'array `hiddenLangs` e resa disponibile al pubblico.
@@ -213,7 +216,7 @@ Per le sfide video, devi cambiare alcune cose. Come prima cosa aggiungi la nuova
       ...
 ```
 
-Quindi aggiungi un id per la nuova lingua ogni sfida video in un blocco verificato (`auditedCerts`). Per esempio, se `auditedCerts` in `all-langs.ts` include `scientific-computing-with-python` per `dothraki`, allora devi aggiungere `dothraki` in `videoLocaleIds`. Il frontespizio dovrebbe essere simile a questo:
+Quindi aggiungi un id per la nuova lingua ogni sfida video in un blocco verificato (`auditedCerts`). Per esempio, se `auditedCerts` in `i18n.ts` include `scientific-computing-with-python` per `dothraki`, allora devi aggiungere l'elemento `dothraki` in `videoLocaleIds`. Il frontespizio dovrebbe essere simile a questo:
 
 ```yml
 videoLocaleIds:
@@ -351,7 +354,7 @@ Quindi apri una PR al repo CDN per aggiungere i file YAML e Day.js per la revisi
 
 Il [repo News](https://github.com/freeCodeCamp/news) prende i dati da un'istanza di Ghost, i file che hai aggiunto al CDN, fa il build di News e il deployment.
 
-> [!WARN] Le pull request al repo news _devono_ provenire dallo stesso repo. Non dovresti lavorare fuori da un fork per questo passaggio.
+> [!WARN] Le pull request al repo news _devono_ provenire dallo stesso repo. Non dovresti lavorare da un fork per questo passaggio.
 
 ### Modificare il file di configurazione principale
 
@@ -409,4 +412,4 @@ Infine, apri una PR per la revisione.
 
 Una volta che entrambe le PR per i repo CDN e News sono state approvate, è possibile effettuare il merge.
 
-> [!NOTE] Deployment will be handled subsequently by the staff. Here is a sample PR: [freeCodeCamp/news#485](https://github.com/freeCodeCamp/news/pull/485) of how they do it and more details are available in the [staff-wiki](https://staff-wiki.freecodecamp.org/docs/flight-manuals/news-instances#jamstack---news--assets).
+> [!NOTE] Il deployment sarà successivamente gestito dallo staff. Ecco una PR di esempio: [freeCodeCamp/news#485](https://github.com/freeCodeCamp/news/pull/485) su come si fa e altri dettagli disponibili in [staff-wiki](https://staff-wiki.freecodecamp.org/docs/flight-manuals/news-instances#jamstack---news--assets).

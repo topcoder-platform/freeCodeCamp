@@ -60,6 +60,7 @@ export const initialState = {
   },
   sessionMeta: { activeDonations: 0 },
   showDonationModal: false,
+  showSignoutModal: false,
   isOnline: true,
   isServerOnline: true,
   donationFormState: {
@@ -285,6 +286,14 @@ export const reducer = handleActions(
       ...state,
       appUsername: '',
       user: {}
+    }),
+    [actionTypes.openSignoutModal]: state => ({
+      ...state,
+      showSignoutModal: true
+    }),
+    [actionTypes.closeSignoutModal]: state => ({
+      ...state,
+      showSignoutModal: false
     }),
     [actionTypes.showCert]: state => ({
       ...state,
