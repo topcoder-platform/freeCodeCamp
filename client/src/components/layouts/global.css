@@ -67,6 +67,10 @@ body {
   min-height: 0;
 }
 
+.tc-integration-layout > div:only-child {
+  height: 100%;
+}
+
 #content-start {
   min-height: 0;
   height: 100%;
