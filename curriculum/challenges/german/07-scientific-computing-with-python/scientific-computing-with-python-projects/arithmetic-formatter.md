@@ -8,7 +8,7 @@ dashedName: arithmetic-formatter
 
 # --description--
 
-Du wirst <a href="https://replit.com/github/freeCodeCamp/boilerplate-arithmetic-formatter" target="_blank" rel="noopener noreferrer nofollow">mit unserem Replit-Startercode an diesem Projekt arbeiten</a>.
+Du wirst <a href="https://replit.com/github/topcoder-platform/boilerplate-arithmetic-formatter" target="_blank" rel="noopener noreferrer nofollow">mit unserem Replit-Startercode an diesem Projekt arbeiten</a>.
 
 -   Start by importing the project on Replit.
 -   Next, you will see a `.replit` window.

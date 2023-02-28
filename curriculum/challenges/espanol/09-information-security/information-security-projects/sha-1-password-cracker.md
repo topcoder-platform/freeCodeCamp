@@ -9,7 +9,7 @@ dashedName: sha-1-password-cracker
 
 # --description--
 
-Para este proyecto, trabajarás con nuestra <a href="https://replit.com/github/freeCodeCamp/boilerplate-SHA-1-password-cracker" target="_blank" rel="noopener noreferrer nofollow">plantilla en Replit</a>.
+Para este proyecto, trabajarás con nuestra <a href="https://replit.com/github/topcoder-platform/boilerplate-SHA-1-password-cracker" target="_blank" rel="noopener noreferrer nofollow">plantilla en Replit</a>.
 
 -   Start by importing the project on Replit.
 -   Next, you will see a `.replit` window.

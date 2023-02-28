@@ -8,7 +8,7 @@ dashedName: demographic-data-analyzer
 
 # --description--
 
-Ви будете <a href="https://replit.com/github/freeCodeCamp/boilerplate-demographic-data-analyzer" target="_blank" rel="noopener noreferrer nofollow">працювати над цим проєктом з нашим стартовим кодом Replit</a>.
+Ви будете <a href="https://replit.com/github/topcoder-platform/boilerplate-demographic-data-analyzer" target="_blank" rel="noopener noreferrer nofollow">працювати над цим проєктом з нашим стартовим кодом Replit</a>.
 
 -   Почніть з імпорту проєкту на Replit.
 -   Потім ви побачите вікно `.replit`.

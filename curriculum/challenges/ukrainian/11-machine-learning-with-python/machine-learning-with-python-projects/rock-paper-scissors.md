@@ -10,7 +10,7 @@ dashedName: rock-paper-scissors
 
 В цьому завданні ви створите програму, щоб грати в камінь-ножиці-папір. Програма, яка обиратиме випадково, зазвичай виграватиме у 50%. Щоб виконати це завдання, ваша програма повинна зіграти матчі проти чотирьох різних ботів, вигравши принаймні 60% ігор у кожному матчі.
 
-Ви будете <a href="https://replit.com/github/freeCodeCamp/boilerplate-rock-paper-scissors" target="_blank" rel="noopener noreferrer nofollow">працювати над цим проєктом з нашим стартовим кодом Replit</a>.
+Ви будете <a href="https://replit.com/github/topcoder-platform/boilerplate-rock-paper-scissors" target="_blank" rel="noopener noreferrer nofollow">працювати над цим проєктом з нашим стартовим кодом Replit</a>.
 
 -   Почніть з імпорту проєкту на Replit.
 -   Потім ви побачите вікно `.replit`.

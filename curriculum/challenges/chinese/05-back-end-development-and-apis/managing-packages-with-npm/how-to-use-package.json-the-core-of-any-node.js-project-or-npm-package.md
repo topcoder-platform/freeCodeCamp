@@ -10,8 +10,8 @@ dashedName: how-to-use-package-json-the-core-of-any-node-js-project-or-npm-packa
 
 你可以采用下面的任意一种编写代码的方式来完成这些挑战：
 
-- 克隆<a href="https://github.com/freeCodeCamp/boilerplate-npm/" target="_blank" rel="noopener noreferrer nofollow">这个 GitHub 仓库</a>，并在本地完成这些挑战。
-- 使用<a href="https://replit.com/github/freeCodeCamp/boilerplate-npm" target="_blank" rel="noopener noreferrer nofollow">我们在 Replit 上的初始化项目</a>来完成这些挑战。
+- 克隆<a href="https://github.com/topcoder-platform/boilerplate-npm/" target="_blank" rel="noopener noreferrer nofollow">这个 GitHub 仓库</a>，并在本地完成这些挑战。
+- 使用<a href="https://replit.com/github/topcoder-platform/boilerplate-npm" target="_blank" rel="noopener noreferrer nofollow">我们在 Replit 上的初始化项目</a>来完成这些挑战。
 - 使用你选择的网站生成器来完成项目。 需要包含我们 GitHub 仓库的所有文件。
 
 If you use Replit, follow these steps to set up the project:
