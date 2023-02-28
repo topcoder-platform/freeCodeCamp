@@ -15,7 +15,7 @@ dashedName: stock-price-checker
 可以采用下面的任意一种方式完成这个挑战：
 
 -   克隆<a href="https://github.com/freeCodeCamp/boilerplate-project-stockchecker/" target="_blank" rel="noopener noreferrer nofollow">这个 GitHub 仓库</a>，并在本地完成你的项目。
--   使用<a href="https://replit.com/github/freeCodeCamp/boilerplate-project-stockchecker" target="_blank" rel="noopener noreferrer nofollow">我们在 Replit 上的初始化项目</a>来完成你的项目。
+-   使用<a href="https://replit.com/github/topcoder-platform/boilerplate-project-stockchecker" target="_blank" rel="noopener noreferrer nofollow">我们在 Replit 上的初始化项目</a>来完成你的项目。
 -   使用你选择的网站生成器来完成项目。 需要包含我们 GitHub 仓库的所有文件。
 
 If you use Replit, follow these steps to set up the project:

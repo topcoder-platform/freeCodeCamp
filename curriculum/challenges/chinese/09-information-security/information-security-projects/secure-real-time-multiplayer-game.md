@@ -11,7 +11,7 @@ dashedName: secure-real-time-multiplayer-game
 使用 HTML Canvas API 和 Socket.io 开发一个功能上类似于 <a href="https://secure-real-time-multiplayer-game.freecodecamp.rocks/" target="_blank" rel="noopener noreferrer nofollow">https://secure-real-time-multiplayer-game.freecodecamp.rocks/</a> 的 2D 实时多人游戏。 在这个项目中，你将使用以下方法之一编写你的代码：
 
 -   克隆<a href="https://github.com/freeCodeCamp/boilerplate-project-secure-real-time-multiplayer-game/" target="_blank" rel="noopener noreferrer nofollow">这个 GitHub 仓库</a>，并在本地完成你的项目。
--   使用<a href="https://replit.com/github/freeCodeCamp/boilerplate-project-secure-real-time-multiplayer-game" target="_blank" rel="noopener noreferrer nofollow">我们在 Replit 上的初始化项目</a>来完成你的项目
+-   使用<a href="https://replit.com/github/topcoder-platform/boilerplate-project-secure-real-time-multiplayer-game" target="_blank" rel="noopener noreferrer nofollow">我们在 Replit 上的初始化项目</a>来完成你的项目
 -   使用您选择的站点生成器来完成项目。 需要确定包含了我们 GitHub 仓库的所有文件。
 
 If you use Replit, follow these steps to set up the project:

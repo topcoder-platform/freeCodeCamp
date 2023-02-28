@@ -10,7 +10,7 @@ dashedName: rock-paper-scissors
 
 For this challenge, you will create a program to play Rock, Paper, Scissors. A program that picks at random will usually win 50% of the time. To pass this challenge your program must play matches against four different bots, winning at least 60% of the games in each match.
 
-You will be <a href="https://replit.com/github/freeCodeCamp/boilerplate-rock-paper-scissors" target="_blank" rel="noopener noreferrer nofollow">working on this project with our Replit starter code</a>.
+You will be <a href="https://replit.com/github/topcoder-platform/boilerplate-rock-paper-scissors" target="_blank" rel="noopener noreferrer nofollow">working on this project with our Replit starter code</a>.
 
 -   Start by importing the project on Replit. 
 -   Next, you will see a `.replit` window. 

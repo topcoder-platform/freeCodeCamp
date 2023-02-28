@@ -8,7 +8,7 @@ dashedName: sea-level-predictor
 
 # --description--
 
-Estarás <a href="https://replit.com/github/freeCodeCamp/boilerplate-sea-level-predictor" target="_blank" rel="noopener noreferrer nofollow">trabajando en este proyecto con nuestro código de inicio Replit</a>.
+Estarás <a href="https://replit.com/github/topcoder-platform/boilerplate-sea-level-predictor" target="_blank" rel="noopener noreferrer nofollow">trabajando en este proyecto con nuestro código de inicio Replit</a>.
 
 -   Start by importing the project on Replit.
 -   Next, you will see a `.replit` window.
