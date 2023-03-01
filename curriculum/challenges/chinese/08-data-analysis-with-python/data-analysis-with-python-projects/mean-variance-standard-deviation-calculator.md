@@ -8,7 +8,7 @@ dashedName: mean-variance-standard-deviation-calculator
 
 # --description--
 
-你将使用<a href="https://replit.com/github/topcoder-platform/boilerplate-mean-variance-standard-deviation-calculator" target="_blank" rel="noopener noreferrer nofollow">我们在 Replit 的初始化项目</a>来完成这个项目。
+你将使用<a href="https://replit.com/github/freeCodeCamp/boilerplate-mean-variance-standard-deviation-calculator" target="_blank" rel="noopener noreferrer nofollow">我们在 Replit 的初始化项目</a>来完成这个项目。
 
 -   Start by importing the project on Replit.
 -   Next, you will see a `.replit` window.

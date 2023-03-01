@@ -13,7 +13,7 @@ Construye una aplicación full stack JavaScript similar a este: <a href="https:/
 Trabajar en este proyecto implicará escribir tu código utilizando uno de los siguientes métodos:
 
 -   Clona <a href="https://github.com/freeCodeCamp/boilerplate-project-messageboard/" target="_blank" rel="noopener noreferrer nofollow">este repositorio GitHub</a> y completa el proyecto localmente.
--   Usa <a href="https://replit.com/github/topcoder-platform/boilerplate-project-messageboard" target="_blank" rel="noopener noreferrer nofollow">nuestra plantilla en Replit</a> para completar tu proyecto.
+-   Usa <a href="https://replit.com/github/freeCodeCamp/boilerplate-project-messageboard" target="_blank" rel="noopener noreferrer nofollow">nuestra plantilla en Replit</a> para completar tu proyecto.
 -   Utiliza un constructor de sitios de tu elección para completar el proyecto. Asegúrate de incorporar todos los archivos de nuestro repositorio GitHub.
 
 If you use Replit, follow these steps to set up the project:

@@ -8,7 +8,7 @@ dashedName: understand-bcrypt-hashes
 
 # --description--
 
-以降のチャレンジについては、以前のチャレンジとは異なる新しいスタータープロジェクトで作業します。 You can find the new starter project on <a href="https://replit.com/github/topcoder-platform/boilerplate-bcrypt" target="_blank" rel="noopener noreferrer nofollow">Replit</a>, or clone it from <a href="https://github.com/freeCodeCamp/boilerplate-bcrypt/" target="_blank" rel="noopener noreferrer nofollow">GitHub</a>.
+以降のチャレンジについては、以前のチャレンジとは異なる新しいスタータープロジェクトで作業します。 You can find the new starter project on <a href="https://replit.com/github/topcoder-platform/boilerplate-bcrypt" target="_blank" rel="noopener noreferrer nofollow">Replit</a>, or clone it from <a href="https://github.com/topcoder-platform/boilerplate-bcrypt/" target="_blank" rel="noopener noreferrer nofollow">GitHub</a>.
 
 BCrypt ハッシュは非常に安全です。 ハッシュは、基本的には元のデータのフィンガープリントであり、常に一意です。 元のデータをアルゴリズムに入力し、固定長の結果を返すことで実現しています。 このプロセスをさらに複雑にして安全性を高めるため、ハッシュをソルト (*salt*) することもできます。 ハッシュをソルトするには、ハッシュ処理の前にランダムなデータを元のデータに追加する必要があります。これにより、ハッシュの解読がさらに困難になります。
 

@@ -8,7 +8,7 @@ dashedName: page-view-time-series-visualizer
 
 # --description--
 
-<a href="https://replit.com/github/topcoder-platform/boilerplate-page-view-time-series-visualizer" target="_blank" rel="noopener noreferrer nofollow">このプロジェクトには Replit スターターコードを使用して取り組んでください</a>。
+<a href="https://replit.com/github/freeCodeCamp/boilerplate-page-view-time-series-visualizer" target="_blank" rel="noopener noreferrer nofollow">このプロジェクトには Replit スターターコードを使用して取り組んでください</a>。
 
 -   Start by importing the project on Replit.
 -   Next, you will see a `.replit` window.

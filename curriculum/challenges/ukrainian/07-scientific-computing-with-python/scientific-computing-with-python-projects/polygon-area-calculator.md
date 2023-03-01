@@ -8,7 +8,7 @@ dashedName: polygon-area-calculator
 
 # --description--
 
-Ви будете <a href="https://replit.com/github/topcoder-platform/boilerplate-polygon-area-calculator" target="_blank" rel="noopener noreferrer nofollow">працювати над цим проєктом з нашим стартовим кодом Replit</a>.
+Ви будете <a href="https://replit.com/github/freeCodeCamp/boilerplate-polygon-area-calculator" target="_blank" rel="noopener noreferrer nofollow">працювати над цим проєктом з нашим стартовим кодом Replit</a>.
 
 -   Почніть з імпорту проєкту на Replit.
 -   Потім ви побачите вікно `.replit`.

@@ -8,7 +8,7 @@ dashedName: medical-data-visualizer
 
 # --description--
 
-Estarás <a href="https://replit.com/github/topcoder-platform/boilerplate-medical-data-visualizer" target="_blank" rel="noopener noreferrer nofollow">trabajando en este proyecto con nuestro código de inicio Replit</a>.
+Estarás <a href="https://replit.com/github/freeCodeCamp/boilerplate-medical-data-visualizer" target="_blank" rel="noopener noreferrer nofollow">trabajando en este proyecto con nuestro código de inicio Replit</a>.
 
 -   Start by importing the project on Replit.
 -   Next, you will see a `.replit` window.
