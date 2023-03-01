@@ -9,7 +9,7 @@ dashedName: port-scanner
 
 # --description--
 
-En este proyecto, vas a trabajar con nuestra <a href="https://replit.com/github/topcoder-platform/boilerplate-port-scanner" target="_blank" rel="noopener noreferrer nofollow">plantilla de Replit</a>.
+En este proyecto, vas a trabajar con nuestra <a href="https://replit.com/github/freeCodeCamp/boilerplate-port-scanner" target="_blank" rel="noopener noreferrer nofollow">plantilla de Replit</a>.
 
 -   Start by importing the project on Replit.
 -   Next, you will see a `.replit` window.

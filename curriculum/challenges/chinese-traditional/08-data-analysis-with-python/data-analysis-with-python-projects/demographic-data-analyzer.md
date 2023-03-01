@@ -8,7 +8,7 @@ dashedName: demographic-data-analyzer
 
 # --description--
 
-你將使用<a href="https://replit.com/github/topcoder-platform/boilerplate-demographic-data-analyzer" target="_blank" rel="noopener noreferrer nofollow">我們在 Replit 的初始化項目</a>來完成這個項目。
+你將使用<a href="https://replit.com/github/freeCodeCamp/boilerplate-demographic-data-analyzer" target="_blank" rel="noopener noreferrer nofollow">我們在 Replit 的初始化項目</a>來完成這個項目。
 
 -   Start by importing the project on Replit.
 -   Next, you will see a `.replit` window.

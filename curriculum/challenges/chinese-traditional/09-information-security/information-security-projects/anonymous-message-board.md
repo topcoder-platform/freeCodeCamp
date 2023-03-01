@@ -13,7 +13,7 @@ dashedName: anonymous-message-board
 在這個項目中，你將使用以下方法之一編寫你的代碼：
 
 -   克隆<a href="https://github.com/freeCodeCamp/boilerplate-project-messageboard/" target="_blank" rel="noopener noreferrer nofollow">這個 GitHub 倉庫</a>，並在本地完成你的項目。
--   使用<a href="https://replit.com/github/topcoder-platform/boilerplate-project-messageboard" target="_blank" rel="noopener noreferrer nofollow">我們在 Replit 上的初始化項目</a>來完成你的項目。
+-   使用<a href="https://replit.com/github/freeCodeCamp/boilerplate-project-messageboard" target="_blank" rel="noopener noreferrer nofollow">我們在 Replit 上的初始化項目</a>來完成你的項目。
 -   使用一個你喜歡的站點生成器來完成項目。 需要確定包含了我們 GitHub 倉庫的所有文件。
 
 If you use Replit, follow these steps to set up the project:

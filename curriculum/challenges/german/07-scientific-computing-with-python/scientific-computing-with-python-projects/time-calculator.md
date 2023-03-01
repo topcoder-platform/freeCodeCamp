@@ -8,7 +8,7 @@ dashedName: time-calculator
 
 # --description--
 
-Du wirst <a href="https://replit.com/github/topcoder-platform/boilerplate-time-calculator" target="_blank" rel="noopener noreferrer nofollow">an diesem Projekt mit unserem Replit-Startercode arbeiten</a>.
+Du wirst <a href="https://replit.com/github/freeCodeCamp/boilerplate-time-calculator" target="_blank" rel="noopener noreferrer nofollow">an diesem Projekt mit unserem Replit-Startercode arbeiten</a>.
 
 -   Start by importing the project on Replit.
 -   Next, you will see a `.replit` window.

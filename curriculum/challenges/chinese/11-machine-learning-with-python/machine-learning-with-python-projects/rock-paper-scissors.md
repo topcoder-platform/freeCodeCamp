@@ -10,7 +10,7 @@ dashedName: rock-paper-scissors
 
 在这个挑战中，你将创建一个程序来玩石头、剪刀、布。 一个随机选取的程序通常会有 50% 的时间获胜。 要通过这一挑战，你的程序必须与四个不同的机器人进行对战，并达到至少 60% 胜率。
 
-你将使用<a href="https://replit.com/github/topcoder-platform/boilerplate-rock-paper-scissors" target="_blank" rel="noopener noreferrer nofollow">我们在 Replit 的初始化项目</a>来完成这个项目。
+你将使用<a href="https://replit.com/github/freeCodeCamp/boilerplate-rock-paper-scissors" target="_blank" rel="noopener noreferrer nofollow">我们在 Replit 的初始化项目</a>来完成这个项目。
 
 -   Start by importing the project on Replit.
 -   Next, you will see a `.replit` window.
