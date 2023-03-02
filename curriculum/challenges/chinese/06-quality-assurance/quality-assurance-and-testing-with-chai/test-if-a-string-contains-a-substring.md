@@ -8,7 +8,7 @@ dashedName: test-if-a-string-contains-a-substring
 
 # --description--
 
-请注意，本项目是在 <a href="https://replit.com/github/freeCodeCamp/boilerplate-mochachai" target="_blank" rel="noopener noreferrer nofollow">Replit</a> 上的初始化项目的基础上进行开发，你也可以从 <a href="https://github.com/freeCodeCamp/boilerplate-mochachai/" target="_blank" rel="noopener noreferrer nofollow">GitHub</a> 上克隆。
+请注意，本项目是在 <a href="https://replit.com/github/topcoder-platform/boilerplate-mochachai" target="_blank" rel="noopener noreferrer nofollow">Replit</a> 上的初始化项目的基础上进行开发，你也可以从 <a href="https://github.com/topcoder-platform/boilerplate-mochachai/" target="_blank" rel="noopener noreferrer nofollow">GitHub</a> 上克隆。
 
 `include()` 和 `notInclude()` 同样可以用于字符串。 `include()` 用于断言字符串中包含某个子字符串。
 

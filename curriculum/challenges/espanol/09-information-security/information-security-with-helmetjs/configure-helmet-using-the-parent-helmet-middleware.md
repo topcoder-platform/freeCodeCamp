@@ -8,7 +8,7 @@ dashedName: configure-helmet-using-the-parent-helmet-middleware
 
 # --description--
 
-Como recordatorio, este proyecto se basa en el siguiente proyecto inicial en <a href="https://replit.com/github/freeCodeCamp/boilerplate-infosec" target="_blank" rel="noopener noreferrer nofollow">Replit</a>, o clonado de <a href="https://github.com/freeCodeCamp/boilerplate-infosec/" target="_blank" rel="noopener noreferrer nofollow">GitHub</a>.
+Como recordatorio, este proyecto se basa en el siguiente proyecto inicial en <a href="https://replit.com/github/topcoder-platform/boilerplate-infosec" target="_blank" rel="noopener noreferrer nofollow">Replit</a>, o clonado de <a href="https://github.com/topcoder-platform/boilerplate-infosec/" target="_blank" rel="noopener noreferrer nofollow">GitHub</a>.
 
 `app.use(helmet())` will automatically include all the middleware introduced above, except `noCache()`, and `contentSecurityPolicy()`, but these can be enabled if necessary. You can also disable or configure any other middleware individually, using a configuration object.
 

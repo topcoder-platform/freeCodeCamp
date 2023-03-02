@@ -10,8 +10,8 @@ dashedName: set-up-a-template-engine
 
 你可以採用下面的任意一種方式完成這些挑戰：
 
-- 克隆<a href="https://github.com/freeCodeCamp/boilerplate-advancednode/" target="_blank" rel="noopener noreferrer nofollow">這個 GitHub 倉庫</a>，並在本地完成這些挑戰。
-- 使用<a href="https://replit.com/github/freeCodeCamp/boilerplate-advancednode" target="_blank" rel="noopener noreferrer nofollow">我們在 Replit 上的初始化項目</a>來完成這些挑戰。
+- 克隆<a href="https://github.com/topcoder-platform/boilerplate-advancednode/" target="_blank" rel="noopener noreferrer nofollow">這個 GitHub 倉庫</a>，並在本地完成這些挑戰。
+- 使用<a href="https://replit.com/github/topcoder-platform/boilerplate-advancednode" target="_blank" rel="noopener noreferrer nofollow">我們在 Replit 上的初始化項目</a>來完成這些挑戰。
 - 使用一個你選擇的站點生成器來完成項目。 需要確定包含了我們 GitHub 倉庫的所有文件。
 
 If you use Replit, follow these steps to set up the project:

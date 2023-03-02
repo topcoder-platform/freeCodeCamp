@@ -8,7 +8,7 @@ dashedName: test-for-truthiness
 
 # --description--
 
-注意点として、このプロジェクトは <a href="https://replit.com/github/freeCodeCamp/boilerplate-mochachai" target="_blank" rel="noopener noreferrer nofollow">Replit</a> にあるスタータープロジェクトをベースに構築されているか、または <a href="https://github.com/freeCodeCamp/boilerplate-mochachai/" target="_blank" rel="noopener noreferrer nofollow">GitHub</a> からクローンされています。
+注意点として、このプロジェクトは <a href="https://replit.com/github/topcoder-platform/boilerplate-mochachai" target="_blank" rel="noopener noreferrer nofollow">Replit</a> にあるスタータープロジェクトをベースに構築されているか、または <a href="https://github.com/topcoder-platform/boilerplate-mochachai/" target="_blank" rel="noopener noreferrer nofollow">GitHub</a> からクローンされています。
 
 `isTrue()` は、ブール値 `true` かどうかをテストし、`isNotTrue()` は、ブール値 `true` 以外の値である場合にテストにパスします。
 

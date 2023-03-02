@@ -10,8 +10,8 @@ dashedName: install-and-require-helmet
 
 Bei der Arbeit an diesen Aufgaben wirst du deinen Code mithilfe folgender Methoden schreiben:
 
-- Klone <a href="https://github.com/freeCodeCamp/boilerplate-infosec/" target="_blank" rel="noopener noreferrer nofollow">dieses GitHub-Repo</a> und beende diese Aufgaben lokal.
-- Use <a href="https://replit.com/github/freeCodeCamp/boilerplate-infosec" target="_blank" rel="noopener noreferrer nofollow">our Replit starter project</a> to complete these challenges.
+- Klone <a href="https://github.com/topcoder-platform/boilerplate-infosec/" target="_blank" rel="noopener noreferrer nofollow">dieses GitHub-Repo</a> und beende diese Aufgaben lokal.
+- Use <a href="https://replit.com/github/topcoder-platform/boilerplate-infosec" target="_blank" rel="noopener noreferrer nofollow">our Replit starter project</a> to complete these challenges.
 - Benutze einen Website-Builder deiner Wahl, um das Projekt abzuschließen. Be sure to incorporate all the files from our GitHub repo.
 
 If you use Replit, follow these steps to set up the project:
