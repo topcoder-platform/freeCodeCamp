@@ -7,6 +7,7 @@ import type {
   editor
   // eslint-disable-next-line import/no-duplicates
 } from 'monaco-editor/esm/vs/editor/editor.api';
+import { OS } from 'monaco-editor/esm/vs/base/common/platform.js';
 import Prism from 'prismjs';
 import React, {
   useEffect,
@@ -74,7 +75,6 @@ import LowerJaw from './lower-jaw';
 
 import './editor.css';
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
 const MonacoEditor = Loadable(() => import('react-monaco-editor'));
 const currentYear = new Date().getFullYear();
 
@@ -275,7 +275,6 @@ const Editor = (props: EditorProps): JSX.Element => {
     noteIndex: number;
     shouldPlay: boolean | undefined;
   }>({
-    // eslint-disable-next-line no-undefined
     sampler: undefined,
     noteIndex: 0,
     shouldPlay: store.get('fcc-sound') as boolean | undefined
@@ -384,6 +383,14 @@ const Editor = (props: EditorProps): JSX.Element => {
     }
   };
 
+  const isTabTrapped = () => !!(store.get('monacoTabTrapped') ?? true);
+
+  // Monaco uses the contextKey 'editorTabMovesFocus' to control how it
+  // reacts to the Tab key. Setting it to true allows the user to tab
+  // out of the editor. False keeps it inside the editor and creates a tab.
+  const setMonacoTabTrapped = (trapped: boolean) =>
+    dataRef.current.editor?.createContextKey('editorTabMovesFocus', !trapped);
+
   const editorDidMount = (
     editor: editor.IStandaloneCodeEditor,
     monaco: typeof monacoEditor
@@ -416,6 +423,24 @@ const Editor = (props: EditorProps): JSX.Element => {
 
       return accessibility;
     };
+
+    const setTabTrapped = (trapped: boolean) => {
+      setMonacoTabTrapped(trapped);
+      store.set('monacoTabTrapped', trapped);
+      ariaAlert(
+        `${
+          trapped
+            ? t('learn.editor-alerts.tab-trapped')
+            : t('learn.editor-alerts.tab-free')
+        }`
+      );
+    };
+
+    // By default, Tab will be trapped in the monaco editor, so we only need to
+    // check if the user has turned this off.
+    if (!isTabTrapped()) {
+      setTabTrapped(false);
+    }
 
     const accessibilityMode = storedAccessibilityMode();
     editor.updateOptions({
@@ -462,11 +487,23 @@ const Editor = (props: EditorProps): JSX.Element => {
       null,
       () => {}
     );
+    // Make toggle tab setting in editor permanent
+    const tabFocusHotkeys =
+      OS === 2 /* Macintosh/iOS */
+        ? monaco.KeyMod.WinCtrl | monaco.KeyMod.Shift | monaco.KeyCode.KEY_M
+        : monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_M;
+    // @ts-ignore
+    editor._standaloneKeybindingService.addDynamicKeybinding(
+      'editor.action.toggleTabFocusMode',
+      tabFocusHotkeys,
+      () => {
+        setTabTrapped(!isTabTrapped());
+      }
+    );
     /* eslint-enable */
     editor.addAction({
       id: 'execute-challenge',
       label: 'Run tests',
-      /* eslint-disable no-bitwise */
       keybindings: [
         monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter,
         monaco.KeyMod.WinCtrl | monaco.KeyCode.Enter
@@ -709,14 +746,7 @@ const Editor = (props: EditorProps): JSX.Element => {
       )}</span>`;
       jawHeading.appendChild(challengeTitle);
       const checkmark = ReactDOMServer.renderToStaticMarkup(
-        <GreenPass
-          hushScreenReaderText
-          style={{
-            height: '15px',
-            width: '15px',
-            margin: '0 0 4px 7px'
-          }}
-        />
+        <GreenPass hushScreenReaderText />
       );
       const completedChallengeHeader = document.createElement('div');
       completedChallengeHeader.innerHTML = checkmark;
@@ -803,12 +833,9 @@ const Editor = (props: EditorProps): JSX.Element => {
     // has changed or if content is dragged between regions)
 
     const coveringRange = getLinesCoveringEditableRegion();
-    const editableRegionBoundaries =
-      (coveringRange && [
-        coveringRange.startLineNumber - 1,
-        coveringRange.endLineNumber + 1
-      ]) ??
-      undefined;
+    const editableRegionBoundaries = coveringRange
+      ? [coveringRange.startLineNumber - 1, coveringRange.endLineNumber + 1]
+      : [];
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     if (player.current.sampler?.loaded && player.current.shouldPlay) {
@@ -1051,7 +1078,6 @@ const Editor = (props: EditorProps): JSX.Element => {
           updateEditableRegion(coveringRange, { model });
         }
       };
-
       // If the content has changed, the zones may need moving. Rather than
       // working out if they have to for a particular content change, we simply
       // ask monaco to update regardless.
@@ -1184,6 +1210,11 @@ const Editor = (props: EditorProps): JSX.Element => {
   useEffect(() => {
     const editor = dataRef.current.editor;
     editor?.layout();
+    // layout() resets the monaco tab trapping back to default (true), so we
+    // need to untrap it if the user had it set to false.
+    if (!isTabTrapped()) {
+      setMonacoTabTrapped(false);
+    }
     if (hasEditableRegion()) {
       updateDescriptionZone();
       updateOutputZone();
@@ -1199,10 +1230,15 @@ const Editor = (props: EditorProps): JSX.Element => {
     });
   }
 
-  const { theme } = props;
-  const editorTheme = theme === Themes.Night ? 'vs-dark-custom' : 'vs-custom';
+  const { isSignedIn, theme } = props;
+  const preferDarkScheme = window.matchMedia(
+    '(prefers-color-scheme: dark)'
+  ).matches;
+  const isDarkTheme =
+    theme === Themes.Night || (preferDarkScheme && !isSignedIn);
+  const editorTheme = isDarkTheme ? 'vs-dark-custom' : 'vs-custom';
   return (
-    <Suspense fallback={<Loader timeout={600} />}>
+    <Suspense fallback={<Loader loaderDelay={600} />}>
       <span className='notranslate editor-monaco-wrap'>
         <MonacoEditor
           editorDidMount={editorDidMount}

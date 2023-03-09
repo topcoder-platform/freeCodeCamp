@@ -18,13 +18,13 @@ Trabajar en este proyecto implicará escribir tu código utilizando uno de los s
 -   Usa este <a href="https://replit.com/github/freeCodeCamp/boilerplate-project-stockchecker" target="_blank" rel="noopener noreferrer nofollow"> proyecto inicial de Replit</a> para completar tu proyecto.
 -   Utiliza un constructor de sitios de tu elección para completar el proyecto. Asegúrate de incorporar todos los archivos de nuestro repositorio GitHub.
 
-If you use Replit, follow these steps to set up the project:
+Si usas Replit, sigue estos pasos para configurar el proyecto:
 
--   Start by importing the project on Replit.
+-   Empieza importando el proyecto en Replit.
 -   Next, you will see a `.replit` window.
 -   Select `Use run command` and click the `Done` button.
 
-When you are done, make sure a working demo of your project is hosted somewhere public. Then submit the URL to it in the `Solution Link` field. Optionally, also submit a link to your project's source code in the `GitHub Link` field.
+When you are done, make sure a working demo of your project is hosted somewhere public. Then submit the URL to it in the Solution Link field. Optionally, also submit a link to your project's source code in the GitHub Link field.
 
 # --instructions--
 

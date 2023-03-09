@@ -108,8 +108,13 @@ function ToolPanel({
         </Button>
       )}
       {/* {challengeType !== challengeTypes.multifileCertProject && (
-        <Button bsStyle='link' className='btn-invert' onClick={openResetModal}>
-          {isMobile ? t('buttons.reset') : t('buttons.reset-code')}
+        <Button
+          block={true}
+          bsStyle='primary'
+          className='btn-invert'
+          onClick={openResetModal}
+        >
+          {isMobile ? t('buttons.reset') : t('buttons.reset-lesson')}
         </Button>
       )} */}
     </div>
