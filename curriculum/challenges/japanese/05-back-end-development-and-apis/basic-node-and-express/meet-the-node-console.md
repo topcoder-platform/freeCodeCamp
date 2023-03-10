@@ -10,8 +10,8 @@ dashedName: meet-the-node-console
 
 チャレンジに取り組むにあたり、以下の方法のうち 1 つを用いてコードを記述します。
 
-- <a href="https://github.com/freeCodeCamp/boilerplate-express/" target="_blank" rel="noopener noreferrer nofollow">GitHub リポジトリ</a>をクローンし、ローカル環境でプロジェクトを完了させる。
-- <a href="https://replit.com/github/freeCodeCamp/boilerplate-express" target="_blank" rel="noopener noreferrer nofollow">Replit スタータープロジェクト</a>を使用して、チャレンジを完了させる。
+- <a href="https://github.com/topcoder-platform/boilerplate-express/" target="_blank" rel="noopener noreferrer nofollow">GitHub リポジトリ</a>をクローンし、ローカル環境でプロジェクトを完了させる。
+- <a href="https://replit.com/github/topcoder-platform/boilerplate-express" target="_blank" rel="noopener noreferrer nofollow">Replit スタータープロジェクト</a>を使用して、チャレンジを完了させる。
 - 使い慣れたサイトビルダーを使用してプロジェクトを完了させる。 必ず GitHub リポジトリのすべてのファイルを取り込む。
 
 Replit を使用する場合は、下記の手順でプロジェクトをセットアップしてください。

@@ -17,4 +17,4 @@ Working on these challenges involves writing code on Replit in our starter proje
 
 Optionally, you may write your project on another platform, but it must be publicly visible for our testing.
 
-Start this project on Replit using [this link](https://replit.com/github/freeCodeCamp/boilerplate-mochachai) or clone [this repository](https://github.com/freeCodeCamp/boilerplate-mochachai/) on GitHub! If you use Replit, remember to save the link to your project somewhere safe!
+Start this project on Replit using [this link](https://replit.com/github/topcoder-platform/boilerplate-mochachai) or clone [this repository](https://github.com/topcoder-platform/boilerplate-mochachai/) on GitHub! If you use Replit, remember to save the link to your project somewhere safe!

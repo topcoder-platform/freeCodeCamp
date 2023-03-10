@@ -10,8 +10,8 @@ dashedName: install-and-set-up-mongoose
 
 你可以採用下面的任意一種編寫代碼的方式來完成這些挑戰：
 
-- 克隆<a href="https://github.com/freeCodeCamp/boilerplate-mongomongoose/" target="_blank" rel="noopener noreferrer nofollow">這個 GitHub 倉庫</a>，並在本地完成這些挑戰。
-- 使用<a href="https://replit.com/github/freeCodeCamp/boilerplate-mongomongoose" target="_blank" rel="noopener noreferrer nofollow">我們在 Replit 上的初始化項目</a>來完成這些挑戰。
+- 克隆<a href="https://github.com/topcoder-platform/boilerplate-mongomongoose/" target="_blank" rel="noopener noreferrer nofollow">這個 GitHub 倉庫</a>，並在本地完成這些挑戰。
+- 使用<a href="https://replit.com/github/topcoder-platform/boilerplate-mongomongoose" target="_blank" rel="noopener noreferrer nofollow">我們在 Replit 上的初始化項目</a>來完成這些挑戰。
 - 使用你選擇的網站生成器來完成項目。 需要包含我們 GitHub 倉庫的所有文件。
 
 如果你使用 Replit，請按照以下步驟設置項目：

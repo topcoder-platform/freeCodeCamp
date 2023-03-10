@@ -10,8 +10,8 @@ dashedName: how-to-use-package-json-the-core-of-any-node-js-project-or-npm-packa
 
 العمل على هذه التحديات سوف ينطوي على كتابة كودك باستخدام إحدى الطرق التالية:
 
-- انسخ <a href="https://github.com/freeCodeCamp/boilerplate-npm/" target="_blank" rel="noopener noreferrer nofollow"> هذا المستودع من GitHub</a> واكمل مشروعك محلياً.
-- استخدم <a href="https://replit.com/github/freeCodeCamp/boilerplate-npm" target="_blank" rel="noopener noreferrer nofollow">مشروعنا المبدئي على Replit</a> لإكمال هذه التحديات.
+- انسخ <a href="https://github.com/topcoder-platform/boilerplate-npm/" target="_blank" rel="noopener noreferrer nofollow"> هذا المستودع من GitHub</a> واكمل مشروعك محلياً.
+- استخدم <a href="https://replit.com/github/topcoder-platform/boilerplate-npm" target="_blank" rel="noopener noreferrer nofollow">مشروعنا المبدئي على Replit</a> لإكمال هذه التحديات.
 - استخدم أي منشئ موقع لإكمال المشروع. تحقق انك أضفت جميع الملفات من مستودعنا في GitHub في مشروعك.
 
 إذا استخدمت Replit، اتبع هذه الخطوات لإعداد المشروع:
