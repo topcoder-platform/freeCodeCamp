@@ -8,12 +8,12 @@ module.exports = defineConfig({
     projectId: 'ke77ns',
     retries: 4,
     chromeWebSecurity: false,
-    specPattern: 'cypress/e2e/**/*.js',
+    specPattern: ['cypress/e2e/**/*.js', 'cypress/e2e/**/*.ts'],
     setupNodeEvents(on, config) {
       config.env = config.env || {};
       on('before:run', () => {
         if (!existsSync('./config/curriculum.json')) {
-          execSync('npm run build:curriculum');
+          execSync('pnpm run build:curriculum');
         }
       });
 

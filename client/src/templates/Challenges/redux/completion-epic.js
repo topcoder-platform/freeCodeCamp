@@ -3,7 +3,6 @@ import { omit } from 'lodash-es';
 import { ofType } from 'redux-observable';
 import { empty, of } from 'rxjs';
 import { catchError, concat, retry, switchMap, tap } from 'rxjs/operators';
-
 import { challengeTypes, submitTypes } from '../../../../utils/challenge-types';
 import { actionTypes as submitActionTypes } from '../../../redux/action-types';
 import {
@@ -20,7 +19,7 @@ import {
 } from '../../../utils/iframe-message';
 import postUpdate$ from '../utils/post-update';
 import { actionTypes } from './action-types';
-import { closeModal, updateSolutionFormValues } from './actions';
+import { updateSolutionFormValues } from './actions';
 import {
   challengeFilesSelector,
   challengeMetaSelector,
@@ -66,6 +65,7 @@ function submitModern(type, state) {
   const tests = challengeTestsSelector(state);
   if (
     challengeType === 11 ||
+    challengeType === 15 ||
     (tests.length > 0 && tests.every(test => test.pass && !test.err))
   ) {
     if (type === actionTypes.checkChallenge) {
@@ -156,6 +156,7 @@ export default function completionEpic(action$, state$) {
     switchMap(({ type }) => {
       const state = state$.value;
       const meta = challengeMetaSelector(state);
+
       const { nextChallengePath, challengeType, superBlock } = meta;
 
       let submitter = () => of({ type: 'no-user-signed-in' });
@@ -168,6 +169,7 @@ export default function completionEpic(action$, state$) {
             challengeType
         );
       }
+
       if (isSignedInSelector(state)) {
         submitter = submitters[submitTypes[challengeType]];
       }
@@ -177,19 +179,20 @@ export default function completionEpic(action$, state$) {
       };
 
       return submitter(type, state).pipe(
-        tap(async res => {
+        tap(res => {
           if (res.type === submitActionTypes.updateFailed) {
             return;
           }
+
           postChallengeCompletedEvent({ meta });
-          const nextNavigatePath = await pathToNavigateTo();
+
+          const nextNavigatePath = pathToNavigateTo();
           if (nextNavigatePath) {
             return navigate(nextNavigatePath);
           } else {
             postNavigationLastChallengeEvent({ meta });
           }
-        }),
-        concat(of(closeModal('completion')))
+        })
       );
     })
   );

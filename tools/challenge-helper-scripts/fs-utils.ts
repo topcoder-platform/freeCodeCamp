@@ -18,7 +18,8 @@ export function getSuperBlockSubPath(superBlock: SuperBlocks): string {
     [SuperBlocks.RespWebDesignNew]: '14-responsive-web-design-22',
     [SuperBlocks.RespWebDesignQA]: '14-responsive-web-design-22-qa',
     [SuperBlocks.JsAlgoDataStructNew]:
-      '15-javascript-algorithms-and-data-structures-22'
+      '15-javascript-algorithms-and-data-structures-22',
+    [SuperBlocks.TheOdinProject]: '16-the-odin-project'
   };
   return pathMap[superBlock];
 }

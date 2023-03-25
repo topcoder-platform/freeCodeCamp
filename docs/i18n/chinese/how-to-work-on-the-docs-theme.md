@@ -37,10 +37,10 @@ The site is generated using [`docsify`](https://docsify.js.org) and served using
 
 Typically you would not need to change any configuration or build the site locally. In case you are interested, here is how it works:
 
-- The homepage's source for this site is available in [`docs/index.html`](index.html).
-- We serve this file as a SPA using `docsify` and GitHub Pages.
+- 此站点的主页源在 [`docs/index.html`](index.html) 中。
+- 我们使用 `docsify`  和 GitHub Pages 将这个文件作为一个 SPA。
 - The `docsify` script generates the content of `markdown` files in the `docs` directory on demand.
-- The homepage is generated from the [`_coverpage.md`](_coverpage.md).
+- 主页是由 [`_coverpage.md`](_coverpage.md) 生成的。
 - The sidebar navigation is generated from [`_sidebar.md`](_sidebar.md).
 
 ### Serving the documentation site locally
@@ -50,13 +50,13 @@ Install freeCodeCamp locally ([see the local setup guide](how-to-setup-freecodec
 #### Serve and launch the documentation site only
 
 ```console
-npm run docs:serve
+pnpm run docs:serve
 ```
 
 #### Serve the documentation site alongside freeCodeCamp locally:
 
 ```console
-npm run develop
+pnpm run develop
 ```
 
 > The documentation site should be available at <http://localhost:3400>
