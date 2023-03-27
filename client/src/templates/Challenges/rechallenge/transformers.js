@@ -222,6 +222,12 @@ export const embedFilesInHtml = async function (challengeFiles) {
       script.removeAttribute('src');
       script.setAttribute('data-src', 'script.js');
     }
+    if (indexJsx?.contents) {
+      // automatic linking of jsx to html
+      const newScript = contentDocument.createElement('script');
+      newScript.innerHTML = indexJsx?.contents;
+      contentDocument.head.appendChild(newScript);
+    }
     return {
       contents: documentElement.innerHTML
     };
