@@ -2,7 +2,7 @@
 def APPNAME = "freecodecamp"
 
 // Define which branch build and deploy need to run in the below array
-def branchfilter = ['dev', 'prod']
+def branchfilter = ['dev', 'prod', 'qa']
 
 if (!branchfilter.contains(env.BRANCH_NAME)) {
     println 'Now is not the time to run the pipeline.'
@@ -27,6 +27,17 @@ if (env.BRANCH_NAME == 'dev') {
 if (env.BRANCH_NAME == 'prod') {
     DEPLOY_ENV = 'PROD'
     LOGICAL_ENV = 'prod'
+    IS_BUILD = true
+    IS_DEPLOY = true 
+    IS_APP_DEPLOY = true
+    IS_API_DEPLOY = true  
+    ENABLE_CACHE = true   
+}
+
+// Define qa-specific vars
+if (env.BRANCH_NAME == 'qa') {
+    DEPLOY_ENV = 'QA'
+    LOGICAL_ENV = 'qa'
     IS_BUILD = true
     IS_DEPLOY = true 
     IS_APP_DEPLOY = true
