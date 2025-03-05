@@ -151,7 +151,7 @@ pipeline {
                 #!/bin/bash
                 sed -i '/node_modules/d' ./.dockerignore
                 docker build -f docker/api/ECSDockerfile -t $APPNAME-api:latest .
-                ./master_deploy.sh -d ECS -e $DEPLOY_ENV -t latest -s ${LOGICAL_ENV}-${APPNAME}-appvar -i ${APPNAME}-api                
+                ./master_deploy.sh -d ECS -e $DEPLOY_ENV -t latest -s ${LOGICAL_ENV}-${APPNAME}-appvar -i ${APPNAME}-api -p FARGATE               
                 """
             }
         }      
