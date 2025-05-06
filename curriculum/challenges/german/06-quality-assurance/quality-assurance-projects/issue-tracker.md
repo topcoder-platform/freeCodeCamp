@@ -12,7 +12,7 @@ Erstelle eine vollständige JavaScript-Anwendung, die eine ähnliche Funktionali
 
 -   Klone <a href="https://github.com/freeCodeCamp/boilerplate-project-issuetracker/" target="_blank" rel="noopener noreferrer nofollow">diese GitHub-Repo</a> und schließe dein Projekt lokal ab.
 -   Verwende<a href="https://replit.com/github/freeCodeCamp/boilerplate-project-issuetracker" target="_blank" rel="noopener noreferrer nofollow"> dieses Replit-Starterprojekt</a>, um dein Projekt fertigzustellen.
--   Verwende einen Site-Builder deiner Wahl, um das Projekt fertigzustellen. Be sure to incorporate all the files from our GitHub repo.
+-   Verwende einen Site-Builder deiner Wahl, um das Projekt abzuschließen. Achte darauf, alle Dateien von unserem GitHub-Repo zu integrieren.
 
 If you use Replit, follow these steps to set up the project:
 
@@ -20,7 +20,7 @@ If you use Replit, follow these steps to set up the project:
 -   Next, you will see a `.replit` window.
 -   Select `Use run command` and click the `Done` button.
 
-When you are done, make sure a working demo of your project is hosted somewhere public. Then submit the URL to it in the `Solution Link` field. Optionally, also submit a link to your project's source code in the `GitHub Link` field.
+When you are done, make sure a working demo of your project is hosted somewhere public. Then submit the URL to it in the Solution Link field. Optionally, also submit a link to your project's source code in the GitHub Link field.
 
 # --instructions--
 

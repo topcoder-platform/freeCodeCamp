@@ -22,7 +22,7 @@ import { createShowCertSaga } from './show-cert-saga';
 import updateCompleteEpic from './update-complete-epic';
 import { createUserTokenSaga } from './user-token-saga';
 
-export const defaultFetchState = {
+const defaultFetchState = {
   pending: true,
   complete: false,
   errored: false,
@@ -40,7 +40,7 @@ export const defaultDonationFormState = {
   }
 };
 
-export const initialState = {
+const initialState = {
   appUsername: '',
   recentlyClaimedBlock: null,
   canRequestProgressDonation: true,
@@ -54,6 +54,10 @@ export const initialState = {
   user: {},
   userFetchState: {
     ...defaultFetchState
+  },
+  allChallengesInfo: {
+    challengeEdges: [],
+    certificateNodes: []
   },
   userProfileFetchState: {
     ...defaultFetchState
@@ -122,11 +126,11 @@ export const reducer = handleActions(
       ...state,
       donationFormState: { ...state.donationFormState, ...payload }
     }),
-    [actionTypes.addDonation]: state => ({
+    [actionTypes.postChargeProcessing]: state => ({
       ...state,
       donationFormState: { ...defaultDonationFormState, processing: true }
     }),
-    [actionTypes.addDonationComplete]: state => {
+    [actionTypes.postChargeComplete]: state => {
       const { appUsername } = state;
       return {
         ...state,
@@ -141,55 +145,13 @@ export const reducer = handleActions(
         donationFormState: { ...defaultDonationFormState, success: true }
       };
     },
-    [actionTypes.addDonationError]: (state, { payload }) => ({
+    [actionTypes.postChargeError]: (state, { payload }) => ({
       ...state,
       donationFormState: { ...defaultDonationFormState, error: payload }
     }),
-    [actionTypes.postChargeStripe]: state => ({
+    [actionTypes.updateAllChallengesInfo]: (state, { payload }) => ({
       ...state,
-      donationFormState: { ...defaultDonationFormState, processing: true }
-    }),
-    [actionTypes.postChargeStripeComplete]: state => {
-      const { appUsername } = state;
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          [appUsername]: {
-            ...state.user[appUsername],
-            isDonating: true
-          }
-        },
-
-        donationFormState: { ...defaultDonationFormState, success: true }
-      };
-    },
-    [actionTypes.postChargeStripeError]: (state, { payload }) => ({
-      ...state,
-      donationFormState: { ...defaultDonationFormState, error: payload }
-    }),
-    [actionTypes.postChargeStripeCard]: state => ({
-      ...state,
-      donationFormState: { ...defaultDonationFormState, processing: true }
-    }),
-    [actionTypes.postChargeStripeCardComplete]: state => {
-      const { appUsername } = state;
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          [appUsername]: {
-            ...state.user[appUsername],
-            isDonating: true
-          }
-        },
-
-        donationFormState: { ...defaultDonationFormState, success: true }
-      };
-    },
-    [actionTypes.postChargeStripeCardError]: (state, { payload }) => ({
-      ...state,
-      donationFormState: { ...defaultDonationFormState, error: payload }
+      allChallengesInfo: { ...payload }
     }),
     [actionTypes.fetchUser]: state => ({
       ...state,

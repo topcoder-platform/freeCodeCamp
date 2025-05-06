@@ -1,6 +1,8 @@
 import { first } from 'lodash-es';
-import React, { ReactElement } from 'react';
+import React, { useState, useEffect, ReactElement } from 'react';
 import { ReflexContainer, ReflexSplitter, ReflexElement } from 'react-reflex';
+import { createSelector } from 'reselect';
+import { connect } from 'react-redux';
 import { sortChallengeFiles } from '../../../../../utils/sort-challengefiles';
 import { GoogleTagManager } from '../../../analytics/google-tag-manater';
 import { Segment } from '../../../analytics/segment';
@@ -9,6 +11,13 @@ import {
   ChallengeFiles,
   ResizeProps
 } from '../../../redux/prop-types';
+import { setShowPreviewPortal, setShowPreviewPane } from '../redux/actions';
+import {
+  portalWindowSelector,
+  showPreviewPortalSelector,
+  showPreviewPaneSelector,
+  isAdvancingToChallengeSelector
+} from '../redux/selectors';
 import PreviewPortal from '../components/preview-portal';
 import ActionRow from './action-row';
 import {
@@ -26,6 +35,8 @@ interface DesktopLayoutProps {
   hasNotes: boolean;
   hasPreview: boolean;
   instructions: ReactElement;
+  isAdvancing: boolean;
+  isFirstStep: boolean;
   layoutState: {
     codePane: Pane;
     editorPane: Pane;
@@ -40,23 +51,83 @@ interface DesktopLayoutProps {
   testOutput: ReactElement;
   visibleEditors: { [key: string]: boolean };
   windowTitle: string;
+  showPreviewPortal: boolean;
+  showPreviewPane: boolean;
+  setShowPreviewPortal: (arg: boolean) => void;
+  setShowPreviewPane: (arg: boolean) => void;
+  portalWindow: null | Window;
 }
 
 const reflexProps = {
   propagateDimensions: true
 };
 
+const mapDispatchToProps = {
+  setShowPreviewPortal,
+  setShowPreviewPane
+};
+
+const mapStateToProps = createSelector(
+  isAdvancingToChallengeSelector,
+  showPreviewPortalSelector,
+  showPreviewPaneSelector,
+  portalWindowSelector,
+
+  (
+    isAdvancing: boolean,
+    showPreviewPortal: boolean,
+    showPreviewPane: boolean,
+    portalWindow: null | Window
+  ) => ({
+    isAdvancing,
+    showPreviewPortal,
+    showPreviewPane,
+    portalWindow
+  })
+);
+
 const DesktopLayout = (props: DesktopLayoutProps): JSX.Element => {
   const {
-    layoutState: {
-      showInstructions,
-      showNotes,
-      showPreviewPane,
-      showPreviewPortal,
-      showConsole
-    },
-    togglePane
-  } = useDesktopLayoutState();
+    showPreviewPane,
+    showPreviewPortal,
+    setShowPreviewPane,
+    setShowPreviewPortal,
+    portalWindow
+  } = props;
+
+  const [showNotes, setShowNotes] = useState(false);
+  const [showConsole, setShowConsole] = useState(false);
+  const [showInstructions, setShowInstuctions] = useState(true);
+
+  const togglePane = (pane: string): void => {
+    switch (pane) {
+      case 'showPreviewPane':
+        if (!showPreviewPane && showPreviewPortal) setShowPreviewPortal(false);
+        setShowPreviewPane(!showPreviewPane);
+        portalWindow?.close();
+        break;
+      case 'showPreviewPortal':
+        if (!showPreviewPortal && showPreviewPane) setShowPreviewPane(false);
+        setShowPreviewPortal(!showPreviewPortal);
+        if (showPreviewPortal) portalWindow?.close();
+        break;
+      case 'showConsole':
+        setShowConsole(!showConsole);
+        break;
+      case 'showNotes':
+        setShowNotes(!showNotes);
+        break;
+      case 'showInstructions':
+        setShowInstuctions(!showInstructions);
+        break;
+      default:
+        setShowInstuctions(true);
+        setShowConsole(false);
+        setShowPreviewPane(true);
+        setShowPreviewPortal(false);
+        setShowNotes(false);
+    }
+  };
 
   const getChallengeFile = () => {
     const { challengeFiles } = props;
@@ -70,6 +141,8 @@ const DesktopLayout = (props: DesktopLayoutProps): JSX.Element => {
     testOutput,
     hasNotes,
     hasPreview,
+    isAdvancing,
+    isFirstStep,
     layoutState,
     notes,
     preview,
@@ -77,6 +150,18 @@ const DesktopLayout = (props: DesktopLayoutProps): JSX.Element => {
     visibleEditors,
     windowTitle
   } = props;
+
+  // on mount
+  useEffect(() => {
+    if (isFirstStep) {
+      setShowPreviewPortal(false);
+      portalWindow?.close();
+      setShowPreviewPane(true);
+    } else if (!isAdvancing && !showPreviewPane && !showPreviewPortal) {
+      togglePane('showPreviewPane');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const challengeFile = getChallengeFile();
   const projectBasedChallenge = hasEditableBoundaries;
@@ -181,12 +266,12 @@ const DesktopLayout = (props: DesktopLayoutProps): JSX.Element => {
       <GoogleTagManager />
       {displayPreviewPortal && (
         <PreviewPortal
-          togglePane={() => {
-            togglePane({
-              panel: DesktopLayoutPanels.PreviewPortal,
-              setVisible: false
-            });
-          }}
+          // togglePane={() => {
+          //   togglePane({
+          //     panel: DesktopLayoutPanels.PreviewPortal,
+          //     setVisible: false
+          //   });
+          // }}
           windowTitle={windowTitle}
         >
           {preview}
@@ -198,4 +283,4 @@ const DesktopLayout = (props: DesktopLayoutProps): JSX.Element => {
 
 DesktopLayout.displayName = 'DesktopLayout';
 
-export default DesktopLayout;
+export default connect(mapStateToProps, mapDispatchToProps)(DesktopLayout);

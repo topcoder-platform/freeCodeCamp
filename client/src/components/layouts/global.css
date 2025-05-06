@@ -49,8 +49,7 @@ body {
   for those pages.
 */
 .overflow-fix {
-  margin-right: 0;
-  margin-left: 0;
+  margin-inline: 0;
 }
 
 .default-layout {
@@ -436,7 +435,7 @@ fieldset[disabled] .btn-primary.focus {
   height: 100%;
   min-height: 20px;
   min-width: 16px;
-  margin-left: 5px;
+  margin-inline-start: 5px;
 }
 
 .link-btn:active {
@@ -603,10 +602,6 @@ hr {
   margin: 32px 0;
 }
 
-.panel-default {
-  background: var(--secondary-background);
-}
-
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary,
@@ -621,6 +616,11 @@ hr {
 
 .dropdown-menu {
   background-color: var(--secondary-color);
+}
+
+.dropdown,
+.dropdown > .dropdown-menu {
+  width: 100%;
 }
 
 .dropdown-menu > li > a {
@@ -711,10 +711,6 @@ pre {
   margin-bottom: 0;
 }
 
-.solution-viewer {
-  border-color: var(--primary-color);
-}
-
 .has-success .help-block,
 .has-success .control-label,
 .has-success .radio,
@@ -790,6 +786,10 @@ blockquote .small {
   background-color: #31708f;
   color: #d9edf7;
   border-color: #31708f;
+}
+
+.alert-dismissable .close {
+  top: 0;
 }
 
 .annual-donation-alert {

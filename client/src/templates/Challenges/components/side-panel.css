@@ -59,3 +59,9 @@
   background: var(--tc-black-5);
   border-radius: 4px;
 }
+
+/* MERGE */
+#mobile-layout-pane-instructions > .instructions-panel {
+  height: auto;
+  overflow-y: none;
+}

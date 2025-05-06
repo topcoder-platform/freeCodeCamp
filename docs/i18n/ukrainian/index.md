@@ -16,7 +16,7 @@
 
 Ви можете допомогти нам збагатити та покращити навчальну програму. Ви також можете оновлювати історії користувачів з проєктів, щоб доповнити поняття тих чи інших концепцій. Ви також можете покращити наші автоматизовані тести, щоб ми могли максимально точно перевіряти код людей.
 
-**Якщо ви хочете поліпшити нашу навчальну програму, то почитайте [як зробити внесок до навчальної програми](how-to-work-on-coding-challenges.md).**
+**Якщо ви хочете покращити нашу навчальну програму, то перегляньте [як зробити внесок до навчальної програми](how-to-work-on-coding-challenges.md).**
 
 ## Переклади
 
@@ -30,7 +30,7 @@
 - [Португальська (Português)](https://www.freecodecamp.org/portuguese/learn)
 - [Українська](https://www.freecodecamp.org/ukrainian/learn)
 - [Японська (日本語)](https://www.freecodecamp.org/japanese/learn)
-- [German (Deutsch)](https://www.freecodecamp.org/german/learn)
+- [Німецька (Deutsch)](https://www.freecodecamp.org/german/learn)
 
 Радимо вам прочитати [це оголошення](https://www.freecodecamp.org/news/help-translate-freecodecamp-language/) та поділитися ним зі своїми друзями, аби зацікавити ще і їх.
 

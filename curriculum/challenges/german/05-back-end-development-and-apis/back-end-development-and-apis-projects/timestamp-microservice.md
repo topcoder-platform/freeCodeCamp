@@ -1,6 +1,6 @@
 ---
 id: bd7158d8c443edefaeb5bdef
-title: Timestamp Microservice
+title: Zeitstempel-Mikroservice
 challengeType: 4
 forumTopicId: 301508
 dashedName: timestamp-microservice
@@ -12,7 +12,7 @@ Erstelle eine vollständige JavaScript-Anwendung, die eine ähnliche Funktionali
 
 -   Klone <a href="https://github.com/freeCodeCamp/boilerplate-project-timestamp/"  target="_blank" rel="noopener noreferrer nofollow">dieses GitHub-Repo</a> und schließe dein Projekt lokal ab.
 -   Benutze <a href="https://replit.com/github/freeCodeCamp/boilerplate-project-timestamp"  target="_blank" rel="noopener noreferrer nofollow">unser Replit-Starter-Projekt</a>, um dein Projekt fertigzustellen.
--   Verwende einen Site-Builder deiner Wahl, um das Projekt fertigzustellen. Be sure to incorporate all the files from our GitHub repo.
+-   Verwende einen Site-Builder deiner Wahl, um das Projekt abzuschließen. Achte darauf, alle Dateien von unserem GitHub-Repo zu integrieren.
 
 If you use Replit, follow these steps to set up the project:
 
@@ -20,7 +20,7 @@ If you use Replit, follow these steps to set up the project:
 -   Next, you will see a `.replit` window.
 -   Select `Use run command` and click the `Done` button.
 
-When you are done, make sure a working demo of your project is hosted somewhere public. Then submit the URL to it in the `Solution Link` field. Optionally, also submit a link to your project's source code in the `GitHub Link` field.
+When you are done, make sure a working demo of your project is hosted somewhere public. Then submit the URL to it in the Solution Link field. Optionally, also submit a link to your project's source code in the GitHub Link field.
 
 **Note:** Time zones conversion is not a purpose of this project, so assume all sent valid dates will be parsed with `new Date()` as GMT dates.
 
@@ -106,7 +106,7 @@ Your project can handle dates that can be successfully parsed by `new Date(date_
   );
 ```
 
-If the input date string is invalid, the api returns an object having the structure `{ error : "Invalid Date" }`
+If the input date string is invalid, the API returns an object having the structure `{ error : "Invalid Date" }`
 
 ```js
 (getUserInput) =>

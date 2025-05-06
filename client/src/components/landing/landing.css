@@ -15,7 +15,7 @@
 
 .landing-page ul {
   list-style: none;
-  padding-left: 0;
+  padding-inline-start: 0;
 }
 
 #featured-logos {
@@ -31,9 +31,10 @@
   font-family: 'Lato', sans-serif;
 }
 
-p.caption {
+figcaption.caption {
   margin: 10px 0 0;
-  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
   color: var(--quaternary-color);
 }
 

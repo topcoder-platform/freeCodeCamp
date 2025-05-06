@@ -30,18 +30,18 @@ Se puede crear un nuevo componente utilizando el siguiente comando desde el dire
 ```bash
 cd tools/ui-components
 
-npm run gen-component MyComponent
+pnpm run gen-component MyComponent
 ```
 
 El comando generará una nueva carpeta dentro del directorio `ui-components`, con los siguientes archivos:
 
-| Nombre del archivo         | Propósito                                                    |
-| -------------------------- | ------------------------------------------------------------ |
-| `index.ts`                 | Se utiliza para exportar el componente y sus tipos.          |
-| `my-component.stories.tsx` | Se utiliza para demostrar el componente en Storybook.        |
-| `my-component.test.tsx`    | Se trata de un archivo de prueba.                            |
-| `my-component.tsx`         | Ahí es donde aplicamos el componente.                        |
-| `types.ts`                 | Es donde localizamos la interfaz y los tipos del componente. |
+| Nombre del archivo         | Propósito                                                  |
+| -------------------------- | ---------------------------------------------------------- |
+| `index.ts`                 | Se utiliza para exportar el componente y sus tipos.        |
+| `my-component.stories.tsx` | Se utiliza para demostrar el componente en Storybook.      |
+| `my-component.test.tsx`    | Se trata de un archivo de prueba.                          |
+| `my-component.tsx`         | Ahí es donde aplicamos el componente.                      |
+| `types.ts`                 | It is where we locate the component's interface and types. |
 
 Cada componente es diferente, pero en general un componente debería:
 
@@ -76,7 +76,7 @@ Los casos de uso del componente deben añadirse al archivo Storybook (`.stories.
 Para iniciar Storybook, ejecute el siguiente comando desde el directorio raíz:
 
 ```bash
-npm run storybook
+pnpm run storybook
 ```
 
 La página Storybook está disponible en [http://localhost:6006](http://localhost:6006).
@@ -88,7 +88,16 @@ Usamos [React Testing Library](https://testing-library.com/docs/react-testing-li
 Para ejecutar pruebas a la biblioteca de componentes, ejecute el siguiente comando desde el directorio raíz:
 
 ```bash
-npm run test-ui-components
+pnpm run test-ui-components
+```
+
+## Adding packages to the UI-Component library
+
+We restrict adding new packages to the UI Components to help with the project's maintainability. In the rare chance that you think a dependency is needed, please check with the maintainers first and then use the following command to add a package:
+
+```bash
+cd tools/ui-components 
+pnpm add package_name
 ```
 
 ### Enlaces útiles

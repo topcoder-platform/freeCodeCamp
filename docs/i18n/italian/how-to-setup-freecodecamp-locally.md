@@ -35,7 +35,7 @@ Questo è essenziale, in quanto consente di lavorare sulla propria copia di free
 
 ## Usare una macchina locale o GitPod
 
-Una volta che hai fatto il fork del repository, scegli tra le seguenti opzioni. Puoi utilizzare la tua macchina locale o uno spazio di lavoro basato su Gitpod per lavorare sul codebase.
+Una volta eseguito il fork del repository, puoi utilizzare la tua macchina locale o uno spazio di lavoro basato su Gitpod per lavorare sul codebase.
 
 Per contribuire a lungo termine, ti consigliamo di impostare freeCodeCamp sulla tua macchina locale.
 
@@ -49,13 +49,7 @@ Ci sono vari modi per avviare uno spazio di lavoro GitPod:
 
    Ad esempio, se visiti il tuo fork su `https://github.com/YOUR_USER_NAME/freeCodeCamp.git`, aggiungi `gitpod.io/#` davanti all'URL nella barra degli indirizzi e premi invio.
 
-   Ovvero, puoi navigare su
-
-   ```
-   gitpod.io/#https://github.com/YOUR_USER_NAME/freeCodeCamp.git
-   ```
-
-   e dovresti vedere uno spazio di lavoro creato per te. Funziona per qualsiasi repository o pull-request su GitHub.
+   Cioè puoi andare su `gitpod.io/#https://github.com/YOUR_USER_NAME/freeCodeCamp.git` e dovresti vedere uno spazio di lavoro creato per te. Funziona per qualsiasi repository o pull-request su GitHub.
 
 2. In alternativa, installa una delle estensioni sottostanti per il browser.
 
@@ -72,16 +66,16 @@ Inizia installando i prerequisiti software per il tuo sistema operativo.
 
 Sosteniamo principalmente lo sviluppo su sistemi Linux e basati su Unix. Il nostro staff e i collaboratori della community lavorano regolarmente con il codebase utilizzando strumenti installati su Ubuntu e macOS.
 
-Supportiamo anche Windows 10 via WSL2, che puoi preparare [leggendo questa guida](how-to-setup-wsl.md).
+Supportiamo anche Windows 10 e 11 via WSL2, che puoi preparare [leggendo questa guida](how-to-setup-wsl.md).
 
-Alcuni membri della comunità sviluppano anche su Windows 10 nativamente con Git per Windows (Git Bash) e altri strumenti installati su Windows. Al momento non disponiamo di un supporto ufficiale per una tale configurazione, consigliamo invece di utilizzare WSL2.
+Alcuni membri della comunità sviluppano anche su Windows  nativamente con Git per Windows (Git Bash) e altri strumenti installati su Windows. Al momento non disponiamo di un supporto ufficiale per una tale configurazione, consigliamo invece di utilizzare WSL2.
 
 #### Prerequisiti:
 
 | Prerequisito                                                                                  | Versione | Note                                                                                         |
 | --------------------------------------------------------------------------------------------- | -------- | -------------------------------------------------------------------------------------------- |
-| [Node.js](http://nodejs.org)                                                                  | `16.x`   | Usiamo la versione "Active LTS", Vedi [LTS Schedule](https://nodejs.org/en/about/releases/). |
-| npm (viene fornito in bundle con node)                                                        | `8.x`    | Usiamo la versione in bundle con Node.js Active LTS.                                         |
+| [Node.js](http://nodejs.org)                                                                  | `18.x`   | Usiamo la versione "Active LTS", Vedi [LTS Schedule](https://nodejs.org/en/about/releases/). |
+| [pnpm](https://pnpm.io/installation)                                                          | `7.x`    | -                                                                                            |
 | [Server Community MongoDB](https://docs.mongodb.com/manual/administration/install-community/) | `4.2.x`  | -                                                                                            |
 
 > [!ATTENTION] Se hai una versione diversa, per favore installa la versione raccomandata. Possiamo supportare solo i problemi di installazione per le versioni consigliate. Vedi [risoluzione dei problemi](#troubleshooting) per i dettagli.
@@ -90,7 +84,7 @@ Se Node.js è già installato sulla macchina, esegui i seguenti comandi per conv
 
 ```console
 node -v
-npm -v
+pnpm -v
 ```
 
 > [!TIP] Consigliamo vivamente di aggiornare le ultime versioni stabili del software sopra elencato, note anche come versioni con supporto a lungo termine (LTS).
@@ -220,7 +214,7 @@ _Non_ è necessario cambiare le chiavi nel file `.env` per eseguire l'applicazio
 Questo passaggio installerà le dipendenze richieste per l'esecuzione dell'applicazione:
 
 ```console
-npm ci
+pnpm install
 ```
 
 #### Passo 3: Avvia MongoDB e fai il seed del database
@@ -258,7 +252,7 @@ Assicurati di sostituire `3.6` con la versione che hai installato
 Successivamente, facciamo il seed del database. In questo passaggio, eseguiamo il comando sottostante che popola il server MongoDB con alcuni set di dati iniziali richiesti dai servizi. Tra questi figurano alcuni schemi, tra le altre cose.
 
 ```console
-npm run seed
+pnpm run seed
 ```
 
 #### Passo 4: Avviare l'applicazione client freeCodeCamp e il server API
@@ -266,7 +260,7 @@ npm run seed
 Ora è possibile avviare il server API e le applicazioni client.
 
 ```console
-npm run develop
+pnpm run develop
 ```
 
 Questo singolo comando attiverà tutti i servizi, compreso il server API e le applicazioni client disponibili su cui lavorare.
@@ -277,7 +271,7 @@ Il server API serve gli endpoint su `http://localhost:3000`. L'app Gatsby serve 
 
 Mentre hai effettuato l'accesso, se visiti <http://localhost:3000/explorer> dovresti vedere le API disponibili.
 
-> [!WARNING] Se pulisci i cookie o esegui `npm run seed:certified-user` perderai l'accesso e dovrai fare di nuovo l'accesso.
+> [!WARNING] Clearing your cookies or running `pnpm run seed:certified-user` will log you out, and you will have to sign in again.
 
 Se hai problemi durante l'installazione, consulta la sezione [risoluzione dei problemi](troubleshooting-development-issues.md)
 
@@ -285,9 +279,9 @@ Se hai problemi durante l'installazione, consulta la sezione [risoluzione dei pr
 
 Un rapido richiamo ai comandi di cui avrai bisogno quando lavorerai localmente.
 
-| comando           | descrizione                                                              |
-| ----------------- | ------------------------------------------------------------------------ |
-| `npm ci`          | Installa / reinstalla tutte le dipendenze e avvia i diversi servizi.     |
-| `npm run seed`    | Analizza tutti i file di markdown della sfida e li inserisce in MongoDB. |
-| `npm run develop` | Avvia il server API freeCodeCamp e le applicazioni client.               |
-| `npm run clean`   | Disistalla tutte le dipendenze e pulisce la cache.                       |
+| comando            | descrizione                                                          |
+| ------------------ | -------------------------------------------------------------------- |
+| `pnpm install`     | Installa / reinstalla tutte le dipendenze e avvia i diversi servizi. |
+| `pnpm run seed`    | Crea utenti di test autorizzati e li inserisce in mongodb.           |
+| `pnpm run develop` | Avvia il server API freeCodeCamp e le applicazioni client.           |
+| `pnpm run clean`   | Disistalla tutte le dipendenze e pulisce la cache.                   |

@@ -66,7 +66,7 @@ textarea.inputarea {
 }
 
 .editor-lower-jaw {
-  padding: 0 15px 15px 0px;
+  padding: 0 15px 15px 0;
 }
 
 .editor-upper-jaw {
@@ -81,14 +81,15 @@ textarea.inputarea {
 
 .challenge-description-header {
   display: flex;
+  gap: 7px;
 }
 
 .description-container h1 {
   font-family: 'Hack-ZeroSlash', monospace;
   font-size: 0.889rem;
   font-weight: 700;
-  line-height: 1;
-  margin: 0 0 0.6rem;
+  line-height: 1.1;
+  margin: 0.1em 0 0.6rem;
 
   display: flex;
   align-items: center;
@@ -129,8 +130,7 @@ textarea.inputarea {
 .myEditableLineDecoration {
   background-color: var(--tc-blue-140);
   width: 15px !important;
-  margin-left: 5px !important;
-  margin-right: 5px !important;
+  margin-inline: 5px !important;
 }
 
 .myEditableLineDecoration.tests-passed {
@@ -233,5 +233,5 @@ textarea.inputarea {
 }
 
 .lower-jaw-icon-bar > button:last-child {
-  margin-right: 0;
+  margin-inline-end: 0;
 }

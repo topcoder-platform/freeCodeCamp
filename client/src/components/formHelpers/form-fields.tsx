@@ -14,7 +14,8 @@ import {
   localhostValidator,
   composeValidators,
   fCCValidator,
-  httpValidator
+  httpValidator,
+  pathValidator
 } from './form-validators';
 import './form-field.css';
 
@@ -65,7 +66,8 @@ function FormFields(props: FormFieldsProps): JSX.Element {
       name === 'githubLink' || isEditorLinkAllowed ? null : editorValidator,
       fCCValidator,
       httpValidator,
-      isLocalLinkAllowed ? null : localhostValidator
+      isLocalLinkAllowed ? null : localhostValidator,
+      pathValidator
     )(value);
     const message: string = (error ||
       validationError ||
@@ -102,8 +104,7 @@ function FormFields(props: FormFieldsProps): JSX.Element {
                 name in placeholders ? placeholders[name] : '';
               const isURL = types[name] === 'url';
               return (
-                <Fragment key={key}>
-                  <FormGroup className='embedded'>
+                  <FormGroup className='embedded' key={key}>
                     {type === 'hidden' ? null : (
                       <ControlLabel htmlFor={key}>
                         {label}
@@ -124,15 +125,13 @@ function FormFields(props: FormFieldsProps): JSX.Element {
                       value={value as string}
                       onBlur={() => markAsBlured(i)}
                     />
-                  </FormGroup>
-                  {blured[i] &&
-                    nullOrWarning(
+                    {blured[i] && nullOrWarning(
                       value as string,
                       !pristine && error,
                       isURL,
                       name
                     )}
-                </Fragment>
+                  </FormGroup>
               );
             }}
           </Field>

@@ -30,18 +30,18 @@ A new component can be created using the following command from the root directo
 ```bash
 cd tools/ui-components
 
-npm run gen-component MyComponent
+pnpm run gen-component MyComponent
 ```
 
 The command will generate a new folder inside the `ui-components` directory, with the following files:
 
-| File name                  | Purpose                                                |
-| -------------------------- | ------------------------------------------------------ |
-| `index.ts`                 | It is used for exporting the component and its types.  |
-| `my-component.stories.tsx` | It is used for demoing the component on Storybook.     |
-| `my-component.test.tsx`    | It is a test file.                                     |
-| `my-component.tsx`         | It is where we implement the component.                |
-| `types.ts`                 | Is is where we locate component's interface and types. |
+| File name                  | Purpose                                                    |
+| -------------------------- | ---------------------------------------------------------- |
+| `index.ts`                 | It is used for exporting the component and its types.      |
+| `my-component.stories.tsx` | It is used for demoing the component on Storybook.         |
+| `my-component.test.tsx`    | It is a test file.                                         |
+| `my-component.tsx`         | It is where we implement the component.                    |
+| `types.ts`                 | It is where we locate the component's interface and types. |
 
 Each component is different, but in general a component should:
 
@@ -76,7 +76,7 @@ Use cases of the component should be added to the Storybook file (`.stories.tsx`
 To start Storybook, run the following command from the root directory:
 
 ```bash
-npm run storybook
+pnpm run storybook
 ```
 
 The Storybook page is available on [http://localhost:6006](http://localhost:6006).
@@ -88,7 +88,16 @@ We use [React Testing Library](https://testing-library.com/docs/react-testing-li
 To run tests against the component library, run the following command from the root directory:
 
 ```bash
-npm run test-ui-components
+pnpm run test-ui-components
+```
+
+## Adding packages to the UI-Component library
+
+We restrict adding new packages to the UI Components to help with the project's maintainability. In the rare chance that you think a dependency is needed, please check with the maintainers first and then use the following command to add a package:
+
+```bash
+cd tools/ui-components 
+pnpm add package_name
 ```
 
 ### Useful links
