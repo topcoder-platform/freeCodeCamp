@@ -48,13 +48,13 @@ jobs:
         run: tar -cf client-artifact.tar client/public
 
       - name: Upload Client Artifact
-        uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb # tag=v3
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: client-artifact
           path: client-artifact.tar
 
       - name: Upload Webpack Stats
-        uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb # tag=v3
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: webpack-stats
           path: client/public/stats.json
@@ -95,7 +95,7 @@ jobs:
       - name: Checkout Source Files
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3
 
-      - uses: actions/download-artifact@9782bd6a9848b53b110e712e20e42d89988822b7 # tag=v3
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: client-artifact
 
