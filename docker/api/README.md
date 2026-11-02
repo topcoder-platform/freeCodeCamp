@@ -8,7 +8,7 @@ ECS currently provides its configuration through the build's `.env` artifact; th
 
 The API uses the maintained Cypress Request fork, Nodemailer 10 and AWS SDK v3 SES, with the existing LoopBack Email model API. SES accepts `SES_ID`, `SES_SECRET`, optional `SES_SESSION_TOKEN`, and `SES_REGION` (falling back to `AWS_REGION` and then `us-east-1`). Without explicit credentials, AWS SDK v3 uses its default provider chain. Development SMTP remains available. The unused direct-MX transport fails closed.
 
-`tools/legacy-compat/apply.cjs` adapts legacy UUID imports in Passport, Jayson, Gatsby and HTTP Auth, plus private Cheerio imports in Enzyme to the patched packages. It runs after a normal root install, before API compilation, and explicitly during production dependency installation. If installing with `--ignore-scripts`, run it before starting the API. Patches check their expected source and are idempotent. The minimatch adapter retains legacy callable/glob behavior while delegating matching to minimatch 11.
+`tools/legacy-compat/apply.cjs` adapts legacy UUID imports in Passport, Jayson and HTTP Auth, plus private Cheerio imports in Enzyme to the patched packages. It runs after a normal root install, before API compilation, and explicitly during production dependency installation. If installing with `--ignore-scripts`, run it before starting the API. Patches check their expected source and are idempotent. The minimatch adapter retains legacy callable/glob behavior while delegating matching to minimatch 11.
 
 After generating the usual configuration, run:
 
@@ -19,3 +19,5 @@ npm run test-server -- --runInBand
 ```
 
 The focused security tests exercise SES MIME/error handling, SMTP delivery, HTTP redirects/forms, the Swagger explorer, UUID compatibility, bounded glob matching, and Passport session regeneration before login cookies/redirects. The existing API suite has eight failures around the upstream cookie contract; the same failures reproduce on unchanged `dev` source with the same dependencies (136 tests pass). The current Topcoder cookie contract uses `tcjwt` and top-level JWT expiry claims.
+
+Frontend dependency migrations and build compatibility are documented in [`tools/legacy-compat/README.md`](../../tools/legacy-compat/README.md).

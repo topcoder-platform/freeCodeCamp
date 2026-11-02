@@ -4,8 +4,16 @@ const { createRequire } = require('node:module');
 const fromApi = createRequire(
   path.resolve(__dirname, '../../api-server/package.json')
 );
+const fromClient = createRequire(
+  path.resolve(__dirname, '../../client/package.json')
+);
 function packageRoot(name) {
-  return path.dirname(fromApi.resolve(`${name}/package.json`));
+  try {
+    return path.dirname(fromApi.resolve(`${name}/package.json`));
+  } catch (error) {
+    if (error.code !== 'MODULE_NOT_FOUND') throw error;
+    return path.dirname(fromClient.resolve(`${name}/package.json`));
+  }
 }
 function replace(file, before, after) {
   const source = fs.readFileSync(file, 'utf8');
@@ -63,8 +71,6 @@ if (enzymeRoot) {
 }
 
 for (const [name, files] of Object.entries({
-  gatsby: ['dist/utils/create-node-id.js', 'dist/utils/jobs/manager.js'],
-  'gatsby-telemetry': ['lib/in-memory-store.js', 'lib/telemetry.js'],
   'webpack-log': ['src/index.js']
 })) {
   let root;
@@ -90,22 +96,6 @@ for (const [name, files] of Object.entries({
     fs.writeFileSync(target, source);
   }
 }
-for (const [name, file] of [
-  ['gatsby-cli', 'lib/reporter/redux/internal-actions.js']
-]) {
-  let root;
-  try {
-    root = packageRoot(name);
-  } catch (error) {
-    if (error.code === 'MODULE_NOT_FOUND') continue;
-    throw error;
-  }
-  replace(
-    path.join(root, file),
-    '_interopRequireDefault(require("uuid"))',
-    '_interopRequireDefault(require("uuid").v4)'
-  );
-}
 
 let httpAuthRoot;
 try {
@@ -118,5 +108,46 @@ if (httpAuthRoot) {
     path.join(httpAuthRoot, 'src/auth/digest.js'),
     "const uuid = require('uuid');",
     "const uuid = require('uuid').v4;"
+  );
+}
+
+// These older callers use Got 9's JSON response flag. Got 11 keeps the callable
+// API and fixes redirect handling, but names this option responseType.
+for (const [name, file] of [
+  ['package-json', 'index.js'],
+  ['git-win', 'lib/get-release.js']
+]) {
+  let root;
+  try {
+    root = packageRoot(name);
+  } catch (error) {
+    if (error.code === 'MODULE_NOT_FOUND') continue;
+    throw error;
+  }
+  replace(path.join(root, file), 'json: true', "responseType: 'json'");
+}
+
+// Gatsby's plugin imports private Webpack paths that moved in patched Webpack.
+// The public exports refer to the same classes.
+let gatsbyRoot;
+try {
+  gatsbyRoot = packageRoot('gatsby');
+} catch (error) {
+  if (error.code !== 'MODULE_NOT_FOUND') throw error;
+}
+if (gatsbyRoot) {
+  const plugin = path.join(
+    gatsbyRoot,
+    'dist/utils/webpack/plugins/partial-hydration.js'
+  );
+  replace(
+    plugin,
+    'require("webpack/lib/Template")',
+    'require("webpack").Template'
+  );
+  replace(
+    plugin,
+    'require("webpack/lib/dependencies/ModuleDependency")',
+    'require("webpack").dependencies.ModuleDependency'
   );
 }

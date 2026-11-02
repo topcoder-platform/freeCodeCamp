@@ -5,6 +5,6 @@
   "description": "Legacy CommonJS entry point backed by patched minimatch",
   "main": "index.cjs",
   "dependencies": {
-    "minimatch": "11.0.1"
+    "minimatch": "11.0.3"
   }
 }
