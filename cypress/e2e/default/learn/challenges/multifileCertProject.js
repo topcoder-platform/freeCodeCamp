@@ -7,16 +7,12 @@ const selectors = {
 };
 
 describe('multifileCertProjects', function () {
-  before(() => {
-    cy.exec('npm run seed');
+  beforeEach(() => {
+    cy.task('seed', 'default');
     cy.login();
     cy.visit(
       'learn/responsive-web-design/responsive-web-design-projects/build-a-tribute-page'
     );
-  });
-
-  beforeEach(() => {
-    cy.preserveSession();
   });
 
   it('should save and reload user code', function () {
@@ -32,7 +28,7 @@ describe('multifileCertProjects', function () {
   it('should save to using ctrl+s hotkey and persist through navigation', function () {
     // since rapid clicks will cause the save requests to be ignored, we have to
     // purge the db:
-    cy.exec('npm run seed');
+    cy.task('seed', 'default');
     // and the redux store:
     cy.reload();
     cy.get(selectors.editor)

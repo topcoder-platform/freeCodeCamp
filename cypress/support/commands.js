@@ -33,20 +33,8 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => {});
 
 Cypress.Commands.add('login', () => {
-  cy.visit(`${Cypress.env('API_LOCATION')}/signin`);
+  cy.visit(`${Cypress.expose('API_LOCATION')}/signin`);
   cy.contains('Welcome back');
-});
-
-Cypress.Commands.add('preserveSession', () => {
-  Cypress.Cookies.preserveOnce(
-    // TOPCODER: we need to use the name of the cookie
-    // created by the TC Auth0 implementation
-    'tcjwt',
-    // 'jwt_access_token',
-    'csrf_token',
-    '_csrf',
-    'connect.sid'
-  );
 });
 
 Cypress.Commands.add('setPrivacyTogglesToPublic', () => {

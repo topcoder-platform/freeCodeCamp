@@ -56,9 +56,13 @@ jobs:
           flutter pub get
           flutter test test/widget_test.dart
 
+      - name: Install matching Cypress binary
+        run: node cypress-install.js
+
       - name: Cypress run
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@18016a55674bd02cabf197de5762a1710cb5577c # v7.4.9
         with:
+          install: false
           record: ${{ env.CYPRESS_RECORD_KEY != 0 }}
           start: npx serve
           wait-on: http://localhost:3000
