@@ -64,19 +64,26 @@ module.exports = function enableAuthentication(app) {
     );
   }
 
-  api.get('/signout', deleteUserToken, (req, res) => {
+  api.get('/signout', deleteUserToken, (req, res, next) => {
     const { origin, returnTo } = getRedirectParams(req);
-    req.logout();
-    req.session.destroy(err => {
+    req.logout(err => {
       if (err) {
-        throw wrapHandledError(new Error('could not destroy session'), {
-          type: 'info',
-          message: 'We could not log you out, please try again in a moment.',
-          redirectTo: origin
-        });
+        return next(err);
       }
-      removeCookies(req, res);
-      res.redirect(returnTo);
+      req.session.destroy(err => {
+        if (err) {
+          return next(
+            wrapHandledError(new Error('could not destroy session'), {
+              type: 'info',
+              message:
+                'We could not log you out, please try again in a moment.',
+              redirectTo: origin
+            })
+          );
+        }
+        removeCookies(req, res);
+        res.redirect(returnTo);
+      });
     });
   });
 
