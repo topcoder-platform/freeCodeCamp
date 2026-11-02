@@ -1,4 +1,4 @@
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import React from 'react';
 import { CloseButton, CloseButtonProps } from './close-button';
 
@@ -7,7 +7,7 @@ const story = {
   component: CloseButton
 };
 
-const Template: Story<CloseButtonProps> = args => <CloseButton {...args} />;
+const Template: StoryFn<CloseButtonProps> = args => <CloseButton {...args} />;
 
 export const Basic = Template.bind({});
 Basic.args = {

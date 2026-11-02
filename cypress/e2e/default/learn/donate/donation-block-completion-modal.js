@@ -1,12 +1,12 @@
 describe('Donate page', () => {
   before(() => {
     cy.clearCookies();
-    cy.exec('npm run seed');
+    cy.task('seed', 'default');
     cy.login();
   });
 
   after(() => {
-    cy.exec('npm run seed');
+    cy.task('seed', 'default');
   });
 
   const projects = [

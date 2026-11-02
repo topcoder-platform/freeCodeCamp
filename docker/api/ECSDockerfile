@@ -1,12 +1,30 @@
-FROM node:16-alpine
-RUN npm i -g pm2@4
-WORKDIR /home/node/api
-COPY .env .
-COPY api-server/lib/ api-server/lib/
-COPY api-server/ecosystem.config.js api-server/
-COPY utils/ utils/
-COPY config/ config/
-COPY api-server/node_modules/ api-server/node_modules/
-COPY node_modules/ node_modules/
-WORKDIR /home/node/api/api-server
-CMD ["pm2-runtime", "./ecosystem.config.js"]
+FROM node:26.12.1-alpine3.24 AS dependencies
+WORKDIR /app
+COPY package.json package-lock.json .npmrc ./
+COPY api-server/package.json api-server/package.json
+COPY tools/minimatch-compat tools/minimatch-compat
+COPY tools/file-type-compat tools/file-type-compat
+COPY tools/proxy-agent-compat tools/proxy-agent-compat
+COPY tools/decode-uri-component-compat tools/decode-uri-component-compat
+COPY tools/legacy-compat tools/legacy-compat
+COPY tools/disabled-direct-mail tools/disabled-direct-mail
+RUN npm ci --omit=dev --workspace=api-server --include-workspace-root=false --ignore-scripts --legacy-peer-deps \
+    && node tools/legacy-compat/apply.cjs \
+    && mkdir -p api-server/node_modules
+
+FROM alpine:3.24
+RUN apk upgrade --no-cache && apk add --no-cache 'nodejs-current~26' ca-certificates \
+    && addgroup -S -g 10001 app && adduser -S -D -u 10001 -G app app
+ENV NODE_ENV=production PM2_HOME=/tmp/pm2
+WORKDIR /app
+# ECS currently supplies application configuration through this build artifact.
+COPY --chown=app:app .env ./
+COPY --chown=app:app api-server/lib/ api-server/lib/
+COPY --chown=app:app api-server/ecosystem.config.js api-server/
+COPY --chown=app:app utils/ utils/
+COPY --chown=app:app config/ config/
+COPY --from=dependencies --chown=app:app /app/api-server/node_modules/ api-server/node_modules/
+COPY --from=dependencies --chown=app:app /app/node_modules/ node_modules/
+WORKDIR /app/api-server
+USER app
+CMD ["node", "../node_modules/pm2/bin/pm2-runtime", "./ecosystem.config.js"]

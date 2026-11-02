@@ -1,4 +1,4 @@
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import React from 'react';
 import { Image } from './image';
 import { ImageProps } from './image.types';
@@ -9,7 +9,7 @@ const story = {
 
 const ref = React.createRef<HTMLImageElement>();
 
-const Template: Story<ImageProps> = args => {
+const Template: StoryFn<ImageProps> = args => {
   return <Image {...args} />;
 };
 

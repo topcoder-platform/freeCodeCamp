@@ -3,13 +3,9 @@ const selectors = {
 };
 
 describe('Certification intro page', () => {
-  before(() => {
-    cy.exec('npm run seed');
-    cy.login();
-  });
-
   beforeEach(() => {
-    cy.preserveSession();
+    cy.task('seed', 'default');
+    cy.login();
   });
 
   it('Should render and toggle correctly', () => {

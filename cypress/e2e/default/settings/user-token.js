@@ -1,7 +1,7 @@
 describe('User token widget on settings page,', function () {
   describe('initially', function () {
     beforeEach(() => {
-      cy.exec('npm run seed');
+      cy.task('seed', 'default');
       cy.login();
     });
 
@@ -15,7 +15,7 @@ describe('User token widget on settings page,', function () {
 
   describe('after creating token', function () {
     beforeEach(() => {
-      cy.exec('npm run seed');
+      cy.task('seed', 'default');
       cy.login();
       cy.visit(
         '/learn/relational-database/learn-bash-by-building-a-boilerplate/build-a-boilerplate'
