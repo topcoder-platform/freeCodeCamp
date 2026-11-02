@@ -80,7 +80,7 @@ describe('getMetaData helper', () => {
     expect(() => {
       getMetaData();
     }).toThrowError(
-      new Error(`ENOENT: no such file or directory, open '${errorPath}'`)
+      expect.objectContaining({ code: 'ENOENT', path: errorPath })
     );
   });
 
@@ -118,7 +118,10 @@ dashedName: step-3
     process.env.CALLING_DIR = 'english/superblock/project';
 
     expect(() => validateMetaData()).toThrow(
-      "ENOENT: no such file or directory, access 'english/superblock/project/id-2.md'"
+      expect.objectContaining({
+        code: 'ENOENT',
+        path: 'english/superblock/project/id-2.md'
+      })
     );
   });
 
