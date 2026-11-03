@@ -6,3 +6,12 @@ client/public
 *Dockerfile*
 *docker-compose*
 **/node_modules
+
+.env*
+*_env
+awsenvconf
+**/.aws
+**/.ssh
+config/env.json
+api-server/lib
+deploy/iam
