@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '22'
           cache: npm
-      - run: npm ci --no-audit
+      - run: npm ci --legacy-peer-deps --install-links=true --no-audit
       - run: npm audit --audit-level=moderate
       - run: npm run test:frontend-compat
       - run: node --test tools/legacy-compat/cypress.test.cjs

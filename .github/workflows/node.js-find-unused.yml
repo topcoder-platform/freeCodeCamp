@@ -36,5 +36,5 @@ jobs:
       - name: Run Checks
         run: |
           echo npm version $(npm -v)
-          npm ci
+          npm ci --legacy-peer-deps --install-links=true
           npm run knip

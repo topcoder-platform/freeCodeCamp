@@ -37,7 +37,7 @@ jobs:
 
       - name: Install and Build
         run: |
-          npm ci
+          npm ci --legacy-peer-deps --install-links=true
           npm run build
 
       - name: Move serve.json to Public Folder
@@ -114,7 +114,7 @@ jobs:
 
       - name: Install and Build
         run: |
-          npm ci
+          npm ci --legacy-peer-deps --install-links=true
           npm run create:config
           npm run build:curriculum
           npm run build:server

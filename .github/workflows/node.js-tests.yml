@@ -51,7 +51,7 @@ jobs:
       - name: Lint Source Files
         run: |
           echo npm version $(npm -v)
-          npm ci
+          npm ci --legacy-peer-deps --install-links=true
           npm run create:config
           npm i --prefix=curriculum-server
           npm i --prefix=web
@@ -85,7 +85,7 @@ jobs:
       - name: Install Dependencies
         run: |
           echo npm version $(npm -v)
-          npm ci
+          npm ci --legacy-peer-deps --install-links=true
           npm run create:config
           npm run build:curriculum
 
@@ -120,7 +120,7 @@ jobs:
       - name: Install Dependencies
         run: |
           echo npm version $(npm -v)
-          npm ci
+          npm ci --legacy-peer-deps --install-links=true
           npm run create:config
           npm run build:curriculum
 
@@ -158,7 +158,7 @@ jobs:
           CLIENT_LOCALE: ${{ matrix.locale }}
         run: |
           echo npm version $(npm -v)
-          npm ci
+          npm ci --legacy-peer-deps --install-links=true
           npm run create:config
           npm run build:curriculum
 
