@@ -14,7 +14,7 @@ At production cutover, stop legacy publishers, enable unconditional tag immutabi
 
 ## Development acceptance
 
-This PR targets `dev`. Administrator-installed dev prerequisites are recorded in the private IaC repository. Existing dev runtime values were migrated from the Jenkins configuration to execution-role-only encrypted runtime references; the existing image is retained for prerequisite validation.
+This PR targets `dev`. Administrator-installed dev prerequisites are recorded in the private IaC repository. Dev encrypted parameters are staged from the existing runtime configuration, which was verified against the legacy image. The attempted task rollout was rolled back; the original healthy task remains unchanged and the new references are not active.
 
 - The runtime-reference attempt and a fresh unchanged legacy task both failed ALB health. Baked configuration matches the source exactly; keep the existing healthy task and resolve new-task health before retrying.
 - Merge security prerequisite #112 before deployment PR #113.
