@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 2,
+  "environment": "dev",
+  "accountId": "811668436784",
+  "region": "us-east-1",
+  "deployRoleArn": "arn:aws:iam::811668436784:role/freeCodeCamp-dev-deploy",
+  "taskRoleArn": null,
+  "executionRoleArn": "arn:aws:iam::811668436784:role/ecsTaskExecutionRole",
+  "cluster": "tc-freecodecamp-serverless",
+  "service": "freecodecamp-api",
+  "taskFamily": "freecodecamp-api",
+  "circleciOrgId": "947bef5e-1669-415d-b83c-4fc85155b7df",
+  "circleciProjectId": "621cc11d-9aa8-4023-98cd-438fb4aa98ae",
+  "repository": "github.com/topcoder-platform/freeCodeCamp",
+  "branch": "dev",
+  "images": {
+    "freecodecamp-api": "freecodecamp-api"
+  }
+}

@@ -12,7 +12,7 @@ on:
 jobs:
   do-everything:
     name: Build & Test
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     services:
       mongodb:
         image: mongo:4.4
@@ -34,10 +34,10 @@ jobs:
           repository: freeCodeCamp/client-config
           path: client-config
 
-      - name: Use Node.js 16.x
+      - name: Use Node.js 22.x
         uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # tag=v3
         with:
-          node-version: 16.x
+          node-version: 22.x
 
       - name: Set freeCodeCamp Environment Variables
         run: |
@@ -49,16 +49,20 @@ jobs:
 
       - name: Install and Build
         run: |
-          npm ci
+          npm ci --legacy-peer-deps --install-links=true
           npm run build
       - name: Seed Database
         run: npm run seed
       - name: Move serve.json to Public Folder
         run: cp client-config/serve.json client/public/serve.json
 
+      - name: Install matching Cypress binary
+        run: node cypress-install.js
+
       - name: Cypress run
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@18016a55674bd02cabf197de5762a1710cb5577c # v7.4.9
         with:
+          install: false
           record: ${{ env.CYPRESS_RECORD_KEY != 0 }}
           start: npm run start-ci
           wait-on: http://localhost:8000

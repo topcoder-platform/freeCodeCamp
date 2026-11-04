@@ -143,38 +143,44 @@ export const createPassportCallbackAuthenticator =
 
         const { accessToken } = userInfo;
         const { provider } = config;
+        const redirectAfterLogin = () => {
+          // TODO: getReturnTo could return a success flag to show a flash message,
+          // but currently it immediately gets overwritten by a second message. We
+          // should either change the message if the flag is present or allow
+          // multiple messages to appear at once.
+
+          if (user.acceptedPrivacyTerms) {
+            // if returnTo has a trailing slash, we need to remove it before comparing
+            // it to the prefixed landing path
+            if (returnTo.slice(-1) === '/') {
+              returnTo = returnTo.slice(0, -1);
+            }
+            returnTo += haveSamePath(redirectBase, returnTo) ? '/learn' : '';
+            return res.redirectWithFlash(returnTo);
+          } else {
+            return res.redirectWithFlash(`${redirectBase}/email-sign-up`);
+          }
+        };
+
         if (accessToken && accessToken.id) {
-          if (provider === 'auth0') {
-            req.flash('success', 'flash.signin-success');
-          } else if (user.email) {
-            req.flash(
-              'info',
-              dedent`
+          return req.login(user, err => {
+            if (err) return next(err);
+            if (provider === 'auth0') {
+              req.flash('success', 'flash.signin-success');
+            } else if (user.email) {
+              req.flash(
+                'info',
+                dedent`
 We are moving away from social authentication for privacy reasons. Next time
 we recommend using your email address: ${user.email} to sign in instead.
             `
-            );
-          }
-          setAccessTokenToResponse({ accessToken }, req, res);
-          req.login(user);
+              );
+            }
+            setAccessTokenToResponse({ accessToken }, req, res);
+            return redirectAfterLogin();
+          });
         }
-
-        // TODO: getReturnTo could return a success flag to show a flash message,
-        // but currently it immediately gets overwritten by a second message. We
-        // should either change the message if the flag is present or allow
-        // multiple messages to appear at once.
-
-        if (user.acceptedPrivacyTerms) {
-          // if returnTo has a trailing slash, we need to remove it before comparing
-          // it to the prefixed landing path
-          if (returnTo.slice(-1) === '/') {
-            returnTo = returnTo.slice(0, -1);
-          }
-          returnTo += haveSamePath(redirectBase, returnTo) ? '/learn' : '';
-          return res.redirectWithFlash(returnTo);
-        } else {
-          return res.redirectWithFlash(`${redirectBase}/email-sign-up`);
-        }
+        return redirectAfterLogin();
       }
     )(req, res, next);
   };

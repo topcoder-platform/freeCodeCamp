@@ -1,0 +1,9 @@
+{
+  "name": "@topcoder/proxy-agent-compat",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.cjs",
+  "dependencies": {
+    "proxy-agent-engine": "npm:proxy-agent@8.0.2"
+  }
+}

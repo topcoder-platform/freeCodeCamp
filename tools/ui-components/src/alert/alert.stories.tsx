@@ -1,4 +1,4 @@
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import React from 'react';
 import { Alert, AlertProps } from './alert';
 
@@ -11,7 +11,7 @@ const story = {
   }
 };
 
-const Template: Story<AlertProps> = args => <Alert {...args} />;
+const Template: StoryFn<AlertProps> = args => <Alert {...args} />;
 
 export const Success = Template.bind({});
 Success.args = {

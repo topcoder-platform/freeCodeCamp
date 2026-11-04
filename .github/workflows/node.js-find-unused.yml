@@ -12,12 +12,12 @@ permissions:
 jobs:
   lint:
     name: Find Unused
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
 
     strategy:
       fail-fast: false
       matrix:
-        node-version: [16.x]
+        node-version: [22.x]
 
     steps:
       - name: Checkout Source Files
@@ -36,5 +36,5 @@ jobs:
       - name: Run Checks
         run: |
           echo npm version $(npm -v)
-          npm ci
+          npm ci --legacy-peer-deps --install-links=true
           npm run knip

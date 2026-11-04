@@ -18,12 +18,12 @@ permissions:
 jobs:
   lint:
     name: Lint
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
 
     strategy:
       fail-fast: false
       matrix:
-        node-version: [16.x]
+        node-version: [22.x]
 
     steps:
       - name: Checkout Source Files
@@ -43,7 +43,7 @@ jobs:
 
       - name: Lint Source Files
         run: |
-          npm ci
+          npm ci --legacy-peer-deps --install-links=true
           npm run create:config
           npm i --prefix=curriculum-server
           npm i --prefix=web
@@ -53,12 +53,12 @@ jobs:
   test:
     name: Test
     needs: lint
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
 
     strategy:
       fail-fast: false
       matrix:
-        node-version: [16.x]
+        node-version: [22.x]
 
     steps:
       - name: Checkout Source Files
@@ -78,7 +78,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          npm ci
+          npm ci --legacy-peer-deps --install-links=true
           npm run create:config
           npm run build:curriculum
 

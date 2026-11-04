@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [22.x]
 
     steps:
       - name: Checkout Source Files
@@ -26,7 +26,7 @@ jobs:
         run: cp sample.env .env
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps --install-links=true
 
       - name: Validate Challenge Files
         run: npm run audit-challenges

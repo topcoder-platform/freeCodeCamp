@@ -1,7 +1,7 @@
 describe('CodeAlly cert challenge', function () {
   describe('before completing the project', function () {
     before(() => {
-      cy.exec('npm run seed');
+      cy.task('seed', 'default');
       cy.login();
       cy.visit(
         '/learn/relational-database/build-a-celestial-bodies-database-project/build-a-celestial-bodies-database'
@@ -23,7 +23,7 @@ describe('CodeAlly cert challenge', function () {
 
   describe('after completing the project', function () {
     before(() => {
-      cy.exec('npm run seed:certified-user');
+      cy.task('seed', 'certified');
       cy.login();
       cy.visit(
         '/learn/relational-database/build-a-celestial-bodies-database-project/build-a-celestial-bodies-database'
