@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { FormControl, FormControlProps, FormControlVariationProps } from '.';
 
 const story = {
@@ -33,7 +33,7 @@ const story = {
   }
 };
 
-const DefaultTemplate: Story<FormControlProps> = args => {
+const DefaultTemplate: StoryFn<FormControlProps> = args => {
   return <FormControl {...args} />;
 };
 
@@ -42,7 +42,7 @@ Default.args = {
   // default props go here
 };
 
-const StaticTemplate: Story<FormControlVariationProps> = args => {
+const StaticTemplate: StoryFn<FormControlVariationProps> = args => {
   return <FormControl.Static {...args} />;
 };
 
@@ -51,7 +51,7 @@ Static.args = {
   children: 'foo@bar.com'
 };
 
-const FeedBackTemplate: Story<FormControlVariationProps> = args => {
+const FeedBackTemplate: StoryFn<FormControlVariationProps> = args => {
   return <FormControl.Feedback {...args} />;
 };
 

@@ -8,3 +8,6 @@ config/certification-settings.js
 config/superblock-order.js
 web/**
 docs/**/*.md
+
+tools/ui-components/storybook-static/**
+tools/challenge-editor/client/build/**

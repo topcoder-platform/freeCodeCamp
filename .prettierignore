@@ -19,3 +19,7 @@ utils/index.js
 web/.next
 curriculum-server/data/curriculum.json
 docs/**/*.md
+
+tools/ui-components/storybook-static/**
+tools/challenge-editor/client/build/**
+api-server/lib/**

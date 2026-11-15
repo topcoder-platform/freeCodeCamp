@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { Link, LinkProps } from '.';
 
 const story = {
@@ -7,7 +7,7 @@ const story = {
   component: Link
 };
 
-const Template: Story<LinkProps> = args => {
+const Template: StoryFn<LinkProps> = args => {
   return <Link {...args} />;
 };
 

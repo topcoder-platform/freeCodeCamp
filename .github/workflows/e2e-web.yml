@@ -15,7 +15,7 @@ on:
 jobs:
   build-client:
     name: Build
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout Source Files
@@ -27,10 +27,10 @@ jobs:
           repository: freeCodeCamp/client-config
           path: client-config
 
-      - name: Use Node.js 16.x
+      - name: Use Node.js 22.x
         uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # tag=v3
         with:
-          node-version: 16.x
+          node-version: 22.x
 
       - name: Set freeCodeCamp Environment Variables
         run: cp sample.env .env
@@ -48,26 +48,26 @@ jobs:
         run: tar -cf client-artifact.tar client/public
 
       - name: Upload Client Artifact
-        uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb # tag=v3
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: client-artifact
           path: client-artifact.tar
 
       - name: Upload Webpack Stats
-        uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb # tag=v3
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: webpack-stats
           path: client/public/stats.json
 
   cypress-run:
     name: Test
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     needs: build-client
     strategy:
       fail-fast: false
       matrix:
         browsers: [chrome, firefox, electron]
-        node-version: [16.x]
+        node-version: [22.x]
         include:
           - browsers: electron
             spec: cypress/e2e/default/learn/challenges/projects.js
@@ -95,7 +95,7 @@ jobs:
       - name: Checkout Source Files
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3
 
-      - uses: actions/download-artifact@9782bd6a9848b53b110e712e20e42d89988822b7 # tag=v3
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: client-artifact
 
@@ -103,14 +103,6 @@ jobs:
         run: |
           tar -xf client-artifact.tar
           rm client-artifact.tar
-
-      - name: Downgrade Firefox
-        run: |
-          curl https://ftp.mozilla.org/pub/firefox/releases/101.0/linux-x86_64/en-US/firefox-101.0.tar.bz2 --output firefox-101.0.tar.bz2
-          tar -xjf firefox-101.0.tar.bz2
-          sudo mv firefox /opt/
-          sudo mv /usr/bin/firefox /usr/bin/firefox_old
-          sudo ln -s /opt/firefox/firefox /usr/bin/firefox
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # tag=v3
@@ -130,9 +122,13 @@ jobs:
       - name: Seed Database
         run: npm run seed
 
+      - name: Install matching Cypress binary
+        run: node cypress-install.js
+
       - name: Cypress run
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@18016a55674bd02cabf197de5762a1710cb5577c # v7.4.9
         with:
+          install: false
           record: ${{ env.CYPRESS_RECORD_KEY != 0 }}
           start: npm run start-ci
           wait-on: http://localhost:8000

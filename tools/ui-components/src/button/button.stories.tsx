@@ -1,4 +1,4 @@
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import React from 'react';
 
 import { Button, ButtonProps } from '.';
@@ -47,7 +47,7 @@ const story = {
   }
 };
 
-const Template: Story<ButtonProps> = args => {
+const Template: StoryFn<ButtonProps> = args => {
   return <Button {...args} />;
 };
 

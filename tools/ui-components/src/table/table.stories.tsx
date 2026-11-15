@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { Table, TableProps } from '.';
 const exampleTable = (
   <>
@@ -63,7 +63,7 @@ const story = {
   }
 };
 
-const Template: Story<TableProps> = args => (
+const Template: StoryFn<TableProps> = args => (
   <Table {...args}>{exampleTable}</Table>
 );
 export const Default = Template.bind({});

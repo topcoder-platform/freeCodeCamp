@@ -12,7 +12,7 @@ import _ from 'lodash';
 import moment from 'moment';
 import { customAlphabet } from 'nanoid';
 import { Observable } from 'rx';
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 import { isEmail } from 'validator';
 
 import { blocklistedUsernames } from '../../../../config/constants';

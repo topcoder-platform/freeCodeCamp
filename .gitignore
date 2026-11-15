@@ -216,3 +216,4 @@ client/i18n/locales/**/trending.json
 
 ### UI Components ###
 tools/ui-components/dist
+tools/ui-components/storybook-static

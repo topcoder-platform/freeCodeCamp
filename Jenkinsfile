@@ -83,7 +83,7 @@ pipeline {
                     cp ./../buildscript/master_deploy.sh .
                     cp ./../buildscript/buildenv.sh .
                     cp ./../buildscript/awsconfiguration.sh . 
-                    curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
+                    curl -sL https://deb.nodesource.com/setup_22.x | sudo bash -
                     apt -y install nodejs
                 '''
             }
@@ -149,7 +149,6 @@ pipeline {
                 // input(message: 'Hello World!', ok: 'Submit')
                 sh """
                 #!/bin/bash
-                sed -i '/node_modules/d' ./.dockerignore
                 docker build -f docker/api/ECSDockerfile -t $APPNAME-api:latest .
                 ./master_deploy.sh -d ECS -e $DEPLOY_ENV -t latest -s ${LOGICAL_ENV}-${APPNAME}-appvar -i ${APPNAME}-api -p FARGATE               
                 """
