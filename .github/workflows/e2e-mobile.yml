@@ -13,7 +13,7 @@ on:
 jobs:
   mobile-test:
     name: Test curriculum for mobile app
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout Source Files
@@ -25,10 +25,10 @@ jobs:
           repository: freeCodeCamp/mobile
           path: mobile
 
-      - name: Use Node.js 16.x
+      - name: Use Node.js 22.x
         uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # tag=v3
         with:
-          node-version: 16.x
+          node-version: 22.x
 
       - name: Setup Flutter 3.3.x
         uses: subosito/flutter-action@dbf1fa04f4d2e52c33185153d06cdb5443aa189d # tag=v2
@@ -56,9 +56,13 @@ jobs:
           flutter pub get
           flutter test test/widget_test.dart
 
+      - name: Install matching Cypress binary
+        run: node cypress-install.js
+
       - name: Cypress run
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@18016a55674bd02cabf197de5762a1710cb5577c # v7.4.9
         with:
+          install: false
           record: ${{ env.CYPRESS_RECORD_KEY != 0 }}
           start: npx serve
           wait-on: http://localhost:3000

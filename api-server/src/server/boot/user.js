@@ -291,9 +291,13 @@ function createPostDeleteAccount(app) {
       if (err) {
         return next(err);
       }
-      req.logout();
-      removeCookies(req, res);
-      return res.status(200).json({});
+      req.logout(err => {
+        if (err) {
+          return next(err);
+        }
+        removeCookies(req, res);
+        return res.status(200).json({});
+      });
     });
   };
 }

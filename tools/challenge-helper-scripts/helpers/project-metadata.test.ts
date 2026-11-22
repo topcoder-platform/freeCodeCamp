@@ -77,11 +77,13 @@ describe('getMetaData helper', () => {
       'mick-priject',
       'meta.json'
     );
-    expect(() => {
+    let error: unknown;
+    try {
       getMetaData();
-    }).toThrowError(
-      new Error(`ENOENT: no such file or directory, open '${errorPath}'`)
-    );
+    } catch (caught) {
+      error = caught;
+    }
+    expect(error).toMatchObject({ code: 'ENOENT', path: errorPath });
   });
 
   afterEach(() => {
@@ -117,9 +119,16 @@ dashedName: step-3
 
     process.env.CALLING_DIR = 'english/superblock/project';
 
-    expect(() => validateMetaData()).toThrow(
-      "ENOENT: no such file or directory, access 'english/superblock/project/id-2.md'"
-    );
+    let error: unknown;
+    try {
+      validateMetaData();
+    } catch (caught) {
+      error = caught;
+    }
+    expect(error).toMatchObject({
+      code: 'ENOENT',
+      path: 'english/superblock/project/id-2.md'
+    });
   });
 
   it('should throw if a step is present in the project, but not the meta', () => {

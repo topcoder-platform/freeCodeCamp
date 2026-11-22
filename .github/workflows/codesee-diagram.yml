@@ -11,7 +11,7 @@ on:
 
 jobs:
   test_map_action:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     if: ${{ github.actor != 'renovate[bot]' && github.actor != 'camperbot' }}
     continue-on-error: true
     name: Run CodeSee Map Analysis
@@ -42,7 +42,7 @@ jobs:
         uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # tag=v3
         if: ${{ fromJSON(steps.detect-languages.outputs.languages).javascript }}
         with:
-          node-version: '16'
+          node-version: '22'
 
       - name: Configure Python 3.x
         uses: actions/setup-python@13ae5bb136fac2878aff31522b9efb785519f984 # tag=v4

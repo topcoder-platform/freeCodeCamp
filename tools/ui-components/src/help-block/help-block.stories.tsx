@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { HelpBlock } from './help-block';
 import { HelpBlockProps } from './types';
 
@@ -13,7 +13,7 @@ const story = {
   }
 };
 
-const Template: Story<HelpBlockProps> = args => {
+const Template: StoryFn<HelpBlockProps> = args => {
   return <HelpBlock {...args} />;
 };
 

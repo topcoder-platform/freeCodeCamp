@@ -12,7 +12,7 @@ jobs:
     if: ${{ github.event.pull_request.user.login == 'camperbot' && contains(github.event.pull_request.title, 'chore(i18n,learn)') }}
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [22.x]
 
     steps:
       - name: Checkout Source Files

@@ -10,11 +10,13 @@ module.exports = {
     allowExtendedOperators: true
   },
   mail: {
-    connector: 'mail',
+    connector: require('./connectors/mail'),
     transport: {
       type: 'ses',
       accessKeyId: process.env.SES_ID,
-      secretAccessKey: process.env.SES_SECRET
+      secretAccessKey: process.env.SES_SECRET,
+      sessionToken: process.env.SES_SESSION_TOKEN,
+      region: process.env.SES_REGION || process.env.AWS_REGION || 'us-east-1'
     }
   }
 };

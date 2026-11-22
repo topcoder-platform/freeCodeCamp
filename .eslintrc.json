@@ -36,7 +36,12 @@
     "import/no-named-as-default": "off",
     "import/no-named-as-default-member": "off",
     "import/order": "error",
-    "import/no-cycle": [2, { "maxDepth": 2 }],
+    "import/no-cycle": [
+      2,
+      {
+        "maxDepth": 2
+      }
+    ],
     "react/prop-types": "off",
     "no-only-tests/no-only-tests": "error",
     "no-unused-vars": "off",
@@ -60,7 +65,8 @@
           "./tools/ui-components/tsconfig.json",
           "./utils/tsconfig.json",
           "./web/tsconfig.json",
-          "./curriculum-server/tsconfig.json"
+          "./curriculum-server/tsconfig.json",
+          "./tools/challenge-editor/client/tsconfig.json"
         ]
       },
       "extends": [
@@ -135,7 +141,9 @@
         "plugin:testing-library/react",
         "plugin:jest-dom/recommended"
       ],
-      "rules": { "import/named": 2 }
+      "rules": {
+        "import/named": 2
+      }
     },
     {
       "files": ["cypress/**/*.js"],

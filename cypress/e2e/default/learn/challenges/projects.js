@@ -33,7 +33,7 @@ const pythonProjects = {
 
 describe('project submission', () => {
   beforeEach(() => {
-    cy.exec('npm run seed');
+    cy.task('seed', 'default');
     cy.login();
   });
   // NOTE: this will fail once challenge tests are added.

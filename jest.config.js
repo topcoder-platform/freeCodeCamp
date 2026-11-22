@@ -9,7 +9,10 @@ module.exports = {
       '<rootDir>/client/src/__mocks__/styleMock.ts',
     // CSS Modules - match files that end with 'module.css'
     '\\.module\\.css$': 'identity-obj-proxy',
-    '^lodash-es$': 'lodash'
+    '^lodash-es$': 'lodash',
+    // Jest 27 does not resolve Gatsby 4's wildcard package exports.
+    '^gatsby-page-utils/(.*)$':
+      '<rootDir>/node_modules/gatsby-page-utils/dist/$1.js'
   },
   globals: {
     __PATH_PREFIX__: ''
@@ -19,7 +22,9 @@ module.exports = {
     '^.+\\.[jt]sx?$': '<rootDir>/jest.transform.js'
   },
   roots: ['.', './client', './api-server'],
-  transformIgnorePatterns: ['node_modules/(?!(gatsby)/)'],
+  transformIgnorePatterns: [
+    'node_modules/(?!(gatsby|query-string|filter-obj|split-on-first)/)'
+  ],
   setupFilesAfterEnv: ['./jest.setup.js'],
   testEnvironment: 'jsdom'
 };

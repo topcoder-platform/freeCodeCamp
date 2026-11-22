@@ -1,4 +1,5 @@
-import React, { Link, useParams } from 'react-router-dom';
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
 import CreateEmptySteps from '../buttons/CreateEmptySteps';
 import CreateNextStep from '../buttons/CreateNextStep';
 import DeleteStep from '../buttons/DeleteStep';

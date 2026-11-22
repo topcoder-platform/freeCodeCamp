@@ -29,7 +29,7 @@ const projects = {
 
 describe('Front End Development Libraries Superblock', () => {
   before(() => {
-    cy.exec('npm run seed');
+    cy.task('seed', 'default');
     cy.login();
     cy.visit('/learn/front-end-development-libraries');
   });
@@ -41,7 +41,7 @@ describe('Front End Development Libraries Superblock', () => {
   });
   describe('After submitting all 5 projects', () => {
     before(() => {
-      cy.exec('npm run seed');
+      cy.task('seed', 'default');
       cy.login();
       cy.visit('/settings');
       cy.setPrivacyTogglesToPublic();
@@ -74,7 +74,7 @@ describe('Front End Development Libraries Superblock', () => {
         cy.contains("I've completed this challenge")
           .should('not.be.disabled')
           .click();
-        cy.intercept(`${Cypress.env('API_LOCATION')}/project-completed`).as(
+        cy.intercept(`${Cypress.expose('API_LOCATION')}/project-completed`).as(
           'challengeCompleted'
         );
         cy.contains('Submit and go to next challenge').click();

@@ -9,12 +9,14 @@
     "moduleResolution": "node",
     "strict": true,
     "noEmit": true,
-    "typeRoots": ["../../node_modules/@types"]
+    "typeRoots": ["../../node_modules/@types"],
+    "skipLibCheck": true
   },
   "ts-node": {
     "compilerOptions": {
       "module": "commonjs"
     },
     "transpileOnly": true
-  }
+  },
+  "exclude": ["node_modules", "storybook-static", "dist"]
 }

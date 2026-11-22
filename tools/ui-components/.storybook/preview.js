@@ -1,3 +1,4 @@
+import React from 'react';
 import '../src/base.css';
 
 export const parameters = {

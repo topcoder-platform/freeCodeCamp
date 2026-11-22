@@ -205,7 +205,19 @@ exports.createPages = function createPages({ graphql, actions, reporter }) {
   });
 };
 
-exports.onCreateWebpackConfig = ({ stage, actions }) => {
+exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
+  if (stage === 'build-html' || stage === 'develop-html') {
+    const config = getConfig();
+    // debug writes to process.env.DEBUG. Inlining this mutable value produces
+    // an invalid assignment in Gatsby's server-rendering bundle.
+    for (const plugin of config.plugins) {
+      if (plugin instanceof webpack.DefinePlugin) {
+        delete plugin.definitions['process.env.DEBUG'];
+      }
+    }
+    actions.replaceWebpackConfig(config);
+  }
+
   const newPlugins = [
     // We add the shims of the node globals to the global scope
     new webpack.ProvidePlugin({

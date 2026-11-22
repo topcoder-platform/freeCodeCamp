@@ -16,13 +16,9 @@ const failedUpdates = [
 const failedUpdatesKey = 'fcc-failed-updates';
 
 describe('failed update flushing', () => {
-  before(() => {
-    cy.exec('npm run seed');
-    cy.login();
-  });
-
   beforeEach(() => {
-    cy.preserveSession();
+    cy.task('seed', 'default');
+    cy.login();
   });
 
   it('should resubmit failed updates, check they are stored, then flush', () => {
